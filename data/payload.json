@@ -1,0 +1,2808 @@
+{
+  "event": "comment",
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3NjkwODIzMTYsImV4cCI6MTc2OTA4MzIxNiwiaXNzIjoiaHR0cDovL3B5cnVzLWlkZW50aXR5LXNlcnZlci5weXJ1cy1wcm9kLnN2Yy5jbHVzdGVyLmxvY2FsIiwiYXVkIjoicHVibGljYXBpIiwiY2xpZW50X2lkIjoiMTFGRjI4OTctRDNFMS00QjAwLUJCRjYtNDFCMzhDM0EwMDcyIiwic3ViIjoiMTIzOTA1OSIsImF1dGhfdGltZSI6MTc2OTA4MjMxNiwiaWRwIjoibG9jYWwiLCJzZWNyZXQiOiJjMDhhNTk2YzVlMWM0ODQwNzU1N2VjM2E0NTdhMGQ3ZWY5NDFjMjQ1MGM4Yzc2ZTcyMjYxZjA5YmYyMTZlNDdjIiwidGltZXN0YW1wIjoiMTc2OTA4MzIxNiIsInNjb3BlIjpbInB1YmxpY2FwaSJdLCJhbXIiOlsicHdkIl19.IZ9_SHqcJiFqGDvyleQo-yp0Ok_o_3wke6EsHDQZq_leH8abW8Jdxp7Y7IH6wPqjfxP5TcqTPgj16xSTIYlo1dSa2BMUk2bNQLQvlwFVsccUa3xW5tDFPE2b_yN59EbSgdthz20Pfbn_Q4mReOcohPag_FWeT7oOnqkLGnJ_UB1TDa6koXY2QdgSO1ZeYsQ3LUZLdUWb9lHG9-Mgkf6hlAWljyndDLnytqOIFIZsMdls7VPCeNRGT4voG3Dz07C0ouq2YkoOStAMB2bXnB7KbPWjRtK4r2XFxBDd_jX9_e349wbtHLvvPzOrLOaqlArnAOS3wxEtfn9ydW9gHroYEw",
+  "task_id": 332269739,
+  "user_id": 1239059,
+  "task": {
+    "id": 332269739,
+    "text": "Продажа: ООО ТК \"УРАЛСАХАР\"08-12/2025",
+    "formatted_text": "Продажа: ООО ТК \"УРАЛСАХАР\"08-12/2025",
+    "create_date": "2026-01-19T07:05:25Z",
+    "last_modified_date": "2026-01-22T11:45:16Z",
+    "author": {
+      "id": 1163701,
+      "first_name": "Руслан",
+      "last_name": "Рамазанов",
+      "email": "9656484782.risopt@inbox.ru",
+      "type": "user",
+      "banned": false,
+      "rights": 0
+    },
+    "subscribers": [
+      {
+        "person": {
+          "id": 1239059,
+          "first_name": "Бот",
+          "last_name": "",
+          "email": "bot@cef27e32-ee34-40fa-b2eb-2a1f9332006a",
+          "type": "bot",
+          "banned": false,
+          "rights": 8191
+        }
+      }
+    ],
+    "form_id": 1512292,
+    "approvals": [
+      [],
+      [
+        {
+          "person": {
+            "id": 1163701,
+            "first_name": "Руслан",
+            "last_name": "Рамазанов",
+            "email": "9656484782.risopt@inbox.ru",
+            "type": "user",
+            "banned": false,
+            "rights": 0
+          },
+          "approval_choice": "approved"
+        }
+      ],
+      [
+        {
+          "person": {
+            "id": 1267927,
+            "first_name": "",
+            "last_name": "РОП или И.О.",
+            "email": "",
+            "type": "role",
+            "banned": false,
+            "rights": 0
+          },
+          "approval_choice": "approved"
+        }
+      ],
+      [
+        {
+          "person": {
+            "id": 656701,
+            "first_name": "Sub-process",
+            "last_name": "",
+            "type": "bot",
+            "web_session_settings": {
+              "life_span_hours": 24
+            }
+          },
+          "approval_choice": "approved"
+        }
+      ],
+      [
+        {
+          "person": {
+            "id": 1183600,
+            "first_name": "Ирина",
+            "last_name": "Логинова",
+            "email": "risopttorg2019@gmail.com",
+            "type": "user"
+          },
+          "approval_choice": "approved"
+        }
+      ],
+      [
+        {
+          "person": {
+            "id": 1163701,
+            "first_name": "Руслан",
+            "last_name": "Рамазанов",
+            "email": "9656484782.risopt@inbox.ru",
+            "type": "user",
+            "banned": false,
+            "rights": 0
+          },
+          "approval_choice": "approved"
+        }
+      ],
+      [
+        {
+          "person": {
+            "id": 1163701,
+            "first_name": "Руслан",
+            "last_name": "Рамазанов",
+            "email": "9656484782.risopt@inbox.ru",
+            "type": "user",
+            "banned": false,
+            "rights": 0
+          },
+          "approval_choice": "approved"
+        },
+        {
+          "person": {
+            "id": 1267927,
+            "first_name": "",
+            "last_name": "РОП или И.О.",
+            "email": "",
+            "type": "role",
+            "banned": false,
+            "rights": 0
+          },
+          "approval_choice": "approved"
+        }
+      ],
+      [
+        {
+          "person": {
+            "id": 1163701,
+            "first_name": "Руслан",
+            "last_name": "Рамазанов",
+            "email": "9656484782.risopt@inbox.ru",
+            "type": "user",
+            "banned": false,
+            "rights": 0
+          },
+          "approval_choice": "waiting"
+        }
+      ],
+      [
+        {
+          "person": {
+            "id": 1163701,
+            "first_name": "Руслан",
+            "last_name": "Рамазанов",
+            "email": "9656484782.risopt@inbox.ru",
+            "type": "user",
+            "banned": false,
+            "rights": 0
+          },
+          "approval_choice": "waiting"
+        }
+      ],
+      [
+        {
+          "person": {
+            "id": 1163701,
+            "first_name": "Руслан",
+            "last_name": "Рамазанов",
+            "email": "9656484782.risopt@inbox.ru",
+            "type": "user",
+            "banned": false,
+            "rights": 0
+          },
+          "approval_choice": "waiting"
+        }
+      ],
+      [],
+      [
+        {
+          "person": {
+            "id": 1163701,
+            "first_name": "Руслан",
+            "last_name": "Рамазанов",
+            "email": "9656484782.risopt@inbox.ru",
+            "type": "user",
+            "banned": false,
+            "rights": 0
+          },
+          "approval_choice": "waiting"
+        }
+      ]
+    ],
+    "current_step": 8,
+    "responsible": {
+      "id": 1163701,
+      "first_name": "Руслан",
+      "last_name": "Рамазанов",
+      "email": "9656484782.risopt@inbox.ru",
+      "type": "user",
+      "banned": false,
+      "rights": 0
+    },
+    "attachments": [
+      {
+        "id": 411502549,
+        "name": "тестовая спецификация.docx",
+        "size": 14882,
+        "version": 1,
+        "md5": "82573D20B6AA906FCA87B80B16049AD1",
+        "url": "https://pyrus.com/services/attachment?id=411502549"
+      },
+      {
+        "id": 411509490,
+        "name": "тестовая спецификация.docx",
+        "size": 14882,
+        "version": 1,
+        "md5": "EAF92451319D190859A7476DA0C4E78D",
+        "url": "https://pyrus.com/services/attachment?id=411509490"
+      }
+    ],
+    "parent_task_id": 258526640,
+    "linked_task_ids": [
+      332304286
+    ],
+    "fields": [
+      {
+        "id": 106,
+        "type": "text",
+        "name": "Тема сообщения",
+        "tooltip": "",
+        "code": "Subject"
+      },
+      {
+        "id": 105,
+        "type": "email",
+        "name": "Эл. почта",
+        "tooltip": "",
+        "code": "SenderEmail"
+      },
+      {
+        "id": 51,
+        "type": "person",
+        "name": "Ответственный менеджер",
+        "tooltip": "",
+        "value": {
+          "id": 1163701,
+          "first_name": "Руслан",
+          "last_name": "Рамазанов",
+          "email": "9656484782.risopt@inbox.ru",
+          "type": "user",
+          "banned": false,
+          "rights": 0
+        }
+      },
+      {
+        "id": 59,
+        "type": "form_link",
+        "name": "Новый Лид",
+        "tooltip": "",
+        "value": {
+          "task_id": 258526640,
+          "task_ids": [
+            258526640
+          ],
+          "subject": "Новый Лид: ООО ТК \"УРАЛСАХАР\"Руслан РамазановНовый лид получен"
+        }
+      },
+      {
+        "id": 52,
+        "type": "text",
+        "name": "Организация",
+        "tooltip": "",
+        "default_value": "",
+        "value": "ООО ТК \"УРАЛСАХАР\""
+      },
+      {
+        "id": 53,
+        "type": "text",
+        "name": "Адрес (Организация)",
+        "tooltip": "",
+        "related_field_id": 52,
+        "code": "Dadata Organization Address",
+        "value": "454081, Челябинская обл., г. Челябинск, ул. Героев Танкограда, д. 28П , офис 19"
+      },
+      {
+        "id": 54,
+        "type": "text",
+        "name": "ИНН (Организация)",
+        "tooltip": "",
+        "related_field_id": 52,
+        "code": "Dadata Inn",
+        "value": "7447288102"
+      },
+      {
+        "id": 55,
+        "type": "text",
+        "name": "КПП (Организация)",
+        "tooltip": "",
+        "related_field_id": 52,
+        "code": "Dadata Kpp",
+        "value": "744701001"
+      },
+      {
+        "id": 56,
+        "type": "text",
+        "name": "ОГРН (Организация)",
+        "tooltip": "",
+        "related_field_id": 52,
+        "code": "Dadata Ogrn",
+        "value": "1197456010619"
+      },
+      {
+        "id": 109,
+        "type": "table",
+        "name": "Адреса доставки",
+        "tooltip": ""
+      },
+      {
+        "id": 7,
+        "type": "multiple_choice",
+        "name": "Тип доставки",
+        "tooltip": "",
+        "default_value": "0",
+        "value": {
+          "choice_id": 5,
+          "choice_ids": [
+            5
+          ],
+          "choice_names": [
+            "Силами поставщика ЖД"
+          ]
+        }
+      },
+      {
+        "id": 103,
+        "type": "phone",
+        "name": "Номер телефона на выгрузке",
+        "tooltip": "",
+        "visibility_condition": {
+          "field_id": 0,
+          "condition_type": 11,
+          "value": "",
+          "children": [
+            {
+              "field_id": 0,
+              "condition_type": 10,
+              "value": "",
+              "children": [
+                {
+                  "field_id": 7,
+                  "condition_type": 5,
+                  "value": "5"
+                },
+                {
+                  "field_id": 7,
+                  "condition_type": 5,
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "value": "79525034905"
+      },
+      {
+        "id": 58,
+        "type": "multiple_choice",
+        "name": "Поставщик",
+        "tooltip": "",
+        "value": {
+          "choice_id": 1,
+          "choice_ids": [
+            1
+          ],
+          "choice_names": [
+            "Рисоптторг"
+          ]
+        }
+      },
+      {
+        "id": 4,
+        "type": "file",
+        "name": "Скан-копия договора",
+        "tooltip": "",
+        "value": [
+          {
+            "id": 411214011,
+            "name": "Договор поставки №08-11 2022 ООО ТК Уралсахар - ООО РисОптТорг (подписанный с двух сторон).pdf",
+            "size": 1494796,
+            "version": 1,
+            "md5": "5A1C8398B50D23E2E90AEB79D3916045",
+            "url": "https://pyrus.com/services/attachment?id=411214011"
+          },
+          {
+            "id": 411214012,
+            "name": "Договор  08-12 2025 (подписанный).pdf",
+            "size": 805957,
+            "version": 1,
+            "md5": "3B6D870318D5D4290B32E94020911B7D",
+            "url": "https://pyrus.com/services/attachment?id=411214012"
+          }
+        ]
+      },
+      {
+        "id": 98,
+        "type": "file",
+        "name": "ТТН",
+        "tooltip": ""
+      },
+      {
+        "id": 60,
+        "type": "text",
+        "name": "№ Договора",
+        "tooltip": "",
+        "value": "08-12/2025"
+      },
+      {
+        "id": 88,
+        "type": "number",
+        "name": "Общий вес",
+        "tooltip": "",
+        "value": 67700
+      },
+      {
+        "id": 81,
+        "type": "money",
+        "name": "Стоимость доставка общ",
+        "tooltip": "",
+        "value": 380000
+      },
+      {
+        "id": 34,
+        "type": "table",
+        "name": "Заказ",
+        "tooltip": "",
+        "value": [
+          {
+            "row_id": 0,
+            "cells": [
+              {
+                "id": 64,
+                "type": "catalog",
+                "name": "Прайс",
+                "tooltip": "",
+                "parent_id": 34,
+                "row_id": 0,
+                "value": {
+                  "item_id": 165022086,
+                  "item_ids": [
+                    165022086
+                  ],
+                  "headers": [
+                    "Номенклатура",
+                    "доп"
+                  ],
+                  "values": [
+                    "Рис ТУ 2 сорт 30%",
+                    ""
+                  ],
+                  "rows": [
+                    [
+                      "Рис ТУ 2 сорт 30%",
+                      ""
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": 100,
+                "type": "catalog",
+                "name": "Упаковка кг.",
+                "tooltip": "",
+                "parent_id": 34,
+                "row_id": 0,
+                "value": {
+                  "item_id": 167283943,
+                  "item_ids": [
+                    167283943
+                  ],
+                  "headers": [
+                    "Упаковка"
+                  ],
+                  "values": [
+                    "25"
+                  ],
+                  "rows": [
+                    [
+                      "25"
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": 101,
+                "type": "multiple_choice",
+                "name": "Способ погрузки",
+                "tooltip": "",
+                "default_value": "0",
+                "parent_id": 34,
+                "row_id": 0,
+                "value": {
+                  "choice_id": 2,
+                  "choice_ids": [
+                    2
+                  ],
+                  "choice_names": [
+                    "Навалом"
+                  ]
+                }
+              },
+              {
+                "id": 102,
+                "type": "multiple_choice",
+                "name": "Доставка",
+                "tooltip": "",
+                "default_value": "0",
+                "parent_id": 34,
+                "row_id": 0,
+                "value": {
+                  "choice_id": 1,
+                  "choice_ids": [
+                    1
+                  ],
+                  "choice_names": [
+                    "Силами поставщика"
+                  ]
+                }
+              },
+              {
+                "id": 36,
+                "type": "money",
+                "name": "Цена за кг",
+                "tooltip": "",
+                "parent_id": 34,
+                "row_id": 0,
+                "value": 28.39
+              },
+              {
+                "id": 37,
+                "type": "number",
+                "name": "всего кг",
+                "tooltip": "",
+                "parent_id": 34,
+                "row_id": 0,
+                "value": 67700
+              },
+              {
+                "id": 63,
+                "type": "multiple_choice",
+                "name": "Адрес отгрузки",
+                "tooltip": "",
+                "parent_id": 34,
+                "row_id": 0,
+                "value": {
+                  "choice_id": 3,
+                  "choice_ids": [
+                    3
+                  ],
+                  "choice_names": [
+                    "Ленинский"
+                  ]
+                }
+              },
+              {
+                "id": 62,
+                "type": "date",
+                "name": "Дата отгрузки",
+                "tooltip": "",
+                "parent_id": 34,
+                "row_id": 0,
+                "value": "2026-01-23"
+              },
+              {
+                "id": 93,
+                "type": "number",
+                "name": "Стоимость доставки",
+                "tooltip": "",
+                "parent_id": 34,
+                "row_id": 0,
+                "value": 380000
+              },
+              {
+                "id": 40,
+                "type": "money",
+                "name": "Стоимость доставки на кг",
+                "tooltip": "",
+                "parent_id": 34,
+                "row_id": 0,
+                "value": 5.61
+              },
+              {
+                "id": 42,
+                "type": "money",
+                "name": "Цена за кг (Дост)",
+                "tooltip": "",
+                "parent_id": 34,
+                "row_id": 0,
+                "value": 34
+              },
+              {
+                "id": 89,
+                "type": "money",
+                "name": "Цена без доставки",
+                "tooltip": "",
+                "parent_id": 34,
+                "row_id": 0,
+                "value": 1922003
+              },
+              {
+                "id": 38,
+                "type": "money",
+                "name": "Цена",
+                "tooltip": "",
+                "parent_id": 34,
+                "row_id": 0,
+                "value": 2301800
+              },
+              {
+                "id": 41,
+                "type": "money",
+                "name": "Итого",
+                "tooltip": "",
+                "parent_id": 34,
+                "row_id": 0,
+                "value": 2301800
+              },
+              {
+                "id": 95,
+                "type": "number",
+                "name": "Расчет",
+                "tooltip": "",
+                "parent_id": 34,
+                "row_id": 0,
+                "value": 0
+              },
+              {
+                "id": 82,
+                "type": "checkmark",
+                "name": "Оплачено",
+                "tooltip": "",
+                "parent_id": 34,
+                "row_id": 0,
+                "value": "checked"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 61,
+        "type": "date",
+        "name": "Дата договора",
+        "tooltip": "",
+        "value": "2025-12-08"
+      },
+      {
+        "id": 5,
+        "type": "file",
+        "name": "Спецификация",
+        "tooltip": "",
+        "value": [
+          {
+            "id": 411228528,
+            "name": "Спецификация 3 от 19.01.2026 ООО ТК Уралсахар.docx",
+            "size": 16720,
+            "version": 2,
+            "root_id": 411214013,
+            "md5": "9CC9EA9897DA0D318B97E1DB81495C91",
+            "url": "https://pyrus.com/services/attachment?id=411228528"
+          },
+          {
+            "id": 411288421,
+            "name": "Уралсахар.pdf",
+            "size": 2405469,
+            "version": 1,
+            "md5": "FA25279BA6F78BDECE4999E4BC86A579",
+            "url": "https://pyrus.com/services/attachment?id=411288421"
+          },
+          {
+            "id": 411542970,
+            "name": "Спец 3 (подписанная).PDF",
+            "size": 320661,
+            "version": 1,
+            "md5": "7A965B45ABA1536A86335BFA145C036C",
+            "url": "https://pyrus.com/services/attachment?id=411542970"
+          }
+        ]
+      },
+      {
+        "id": 57,
+        "type": "text",
+        "name": "Комментарий по заявке",
+        "tooltip": "",
+        "code": "Message",
+        "value": "Меловые не более 6% !!!"
+      },
+      {
+        "id": 6,
+        "type": "multiple_choice",
+        "name": "Тип оплаты",
+        "tooltip": "",
+        "default_value": "0",
+        "value": {
+          "choice_id": 1,
+          "choice_ids": [
+            1
+          ],
+          "choice_names": [
+            "Предоплата"
+          ]
+        }
+      },
+      {
+        "id": 2,
+        "type": "checkmark",
+        "name": "Получена предоплата",
+        "tooltip": "",
+        "visibility_condition": {
+          "field_id": 0,
+          "condition_type": 11,
+          "value": "",
+          "children": [
+            {
+              "field_id": 0,
+              "condition_type": 10,
+              "value": "",
+              "children": [
+                {
+                  "field_id": 6,
+                  "condition_type": 5,
+                  "value": "1"
+                }
+              ]
+            }
+          ]
+        },
+        "value": "checked"
+      },
+      {
+        "id": 67,
+        "type": "money",
+        "name": "Оплаченно",
+        "tooltip": ""
+      },
+      {
+        "id": 11,
+        "type": "money",
+        "name": "Сумма предоплаты",
+        "tooltip": "",
+        "value": 2301800
+      },
+      {
+        "id": 97,
+        "type": "number",
+        "name": "Скидка",
+        "tooltip": "",
+        "default_value": "0,0000000000",
+        "value": 0
+      },
+      {
+        "id": 25,
+        "type": "money",
+        "name": "Сумма отсрочки",
+        "tooltip": "",
+        "visibility_condition": {
+          "field_id": 0,
+          "condition_type": 11,
+          "value": "",
+          "children": [
+            {
+              "field_id": 0,
+              "condition_type": 10,
+              "value": "",
+              "children": [
+                {
+                  "field_id": 6,
+                  "condition_type": 5,
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": 33,
+        "type": "date",
+        "name": "Дата прихода ДС по спец",
+        "tooltip": "",
+        "visibility_condition": {
+          "field_id": 0,
+          "condition_type": 11,
+          "value": "",
+          "children": [
+            {
+              "field_id": 0,
+              "condition_type": 10,
+              "value": "",
+              "children": [
+                {
+                  "field_id": 6,
+                  "condition_type": 5,
+                  "value": "1"
+                }
+              ]
+            }
+          ]
+        },
+        "value": "2026-01-27"
+      },
+      {
+        "id": 27,
+        "type": "date",
+        "name": "Дата прихода ДС по спец (пост оплата)",
+        "tooltip": "",
+        "visibility_condition": {
+          "field_id": 0,
+          "condition_type": 11,
+          "value": "",
+          "children": [
+            {
+              "field_id": 0,
+              "condition_type": 10,
+              "value": "",
+              "children": [
+                {
+                  "field_id": 6,
+                  "condition_type": 5,
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": 18,
+        "type": "date",
+        "name": "Дата получения заказчиком",
+        "tooltip": ""
+      },
+      {
+        "id": 44,
+        "type": "multiple_choice",
+        "name": "Результат сделки",
+        "tooltip": "",
+        "default_value": "0"
+      },
+      {
+        "id": 10,
+        "type": "text",
+        "name": "Комментарий ОС",
+        "tooltip": "",
+        "visibility_condition": {
+          "field_id": 0,
+          "condition_type": 11,
+          "value": "",
+          "children": [
+            {
+              "field_id": 0,
+              "condition_type": 10,
+              "value": "",
+              "children": [
+                {
+                  "field_id": 44,
+                  "condition_type": 5,
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": 84,
+        "type": "money",
+        "name": "НДС 10%",
+        "tooltip": ""
+      },
+      {
+        "id": 15,
+        "type": "multiple_choice",
+        "name": "Статус",
+        "tooltip": "",
+        "code": "Status",
+        "value": {
+          "choice_id": 10,
+          "choice_ids": [
+            10
+          ],
+          "choice_names": [
+            "Спецификация подписана"
+          ]
+        }
+      },
+      {
+        "id": 115,
+        "type": "note",
+        "name": "НАЖАТЬ",
+        "tooltip": "Кнопка для формирования спецификации. Готовая спецификация отправляется в файлы. Чтобы сформировать спецификацию заново, нужно нажать кнопку еще раз.",
+        "value": "Кнопка для формирования спецификации. Готовая спецификация отправляется в файлы. Чтобы сформировать спецификацию заново, нужно нажать кнопку еще раз."
+      },
+      {
+        "id": 127,
+        "type": "title",
+        "name": "Поля для авто-формирования спецификации",
+        "tooltip": "",
+        "value": {
+          "checkmark": "unchecked",
+          "fields": [
+            {
+              "id": 29,
+              "type": "text",
+              "name": "№ Спецификации",
+              "tooltip": "",
+              "default_value": "0",
+              "parent_id": 127,
+              "value": "0"
+            },
+            {
+              "id": 139,
+              "type": "text",
+              "name": "Грузоотправитель",
+              "tooltip": "",
+              "parent_id": 127,
+              "visibility_condition": {
+                "field_id": 0,
+                "condition_type": 11,
+                "value": "",
+                "children": [
+                  {
+                    "field_id": 0,
+                    "condition_type": 10,
+                    "value": "",
+                    "children": [
+                      {
+                        "field_id": 7,
+                        "condition_type": 5,
+                        "value": "5"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": 140,
+              "type": "text",
+              "name": "Станция назначения",
+              "tooltip": "",
+              "parent_id": 127,
+              "visibility_condition": {
+                "field_id": 0,
+                "condition_type": 11,
+                "value": "",
+                "children": [
+                  {
+                    "field_id": 0,
+                    "condition_type": 10,
+                    "value": "",
+                    "children": [
+                      {
+                        "field_id": 7,
+                        "condition_type": 5,
+                        "value": "5"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "value": "Челябинск-Южный ЮУр.ж.д. 800605, Грузополучатель: ООО МАКИЗ15762922 (9713), Почтовый адрес грузополучателя: 456655, Челябинская обл., г. Копейск, ул. Куйбышева д.37 корп. Б, тел/факс: 8 (35139) 4 10 91."
+            },
+            {
+              "id": 141,
+              "type": "text",
+              "name": "Грузополучатель",
+              "tooltip": "",
+              "parent_id": 127,
+              "visibility_condition": {
+                "field_id": 0,
+                "condition_type": 11,
+                "value": "",
+                "children": [
+                  {
+                    "field_id": 0,
+                    "condition_type": 10,
+                    "value": "",
+                    "children": [
+                      {
+                        "field_id": 7,
+                        "condition_type": 5,
+                        "value": "5"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": 121,
+              "type": "number",
+              "name": "Количество календарных дней со дня поставки товара на склад Покупателя",
+              "tooltip": "Количество дне в постоплате",
+              "parent_id": 127,
+              "visibility_condition": {
+                "field_id": 0,
+                "condition_type": 11,
+                "value": "",
+                "children": [
+                  {
+                    "field_id": 0,
+                    "condition_type": 10,
+                    "value": "",
+                    "children": [
+                      {
+                        "field_id": 6,
+                        "condition_type": 5,
+                        "value": "2"
+                      }
+                    ]
+                  },
+                  {
+                    "field_id": 0,
+                    "condition_type": 11,
+                    "value": "",
+                    "children": [
+                      {
+                        "field_id": 7,
+                        "condition_type": 8,
+                        "value": "5"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": 111,
+              "type": "text",
+              "name": "Дата договора (Текст)",
+              "tooltip": "Текстовый вариант даты договора",
+              "parent_id": 127,
+              "value": "«8» декабря 2025 г."
+            },
+            {
+              "id": 112,
+              "type": "text",
+              "name": "Дата составления",
+              "tooltip": "Дата составления спецификации",
+              "parent_id": 127,
+              "value": "«19» январь 2026 года"
+            },
+            {
+              "id": 133,
+              "type": "multiple_choice",
+              "name": "Адрес отгрузки спецификации",
+              "tooltip": "",
+              "parent_id": 127,
+              "value": {
+                "choice_id": 3,
+                "choice_ids": [
+                  3
+                ],
+                "choice_names": [
+                  "Ленинский"
+                ]
+              }
+            },
+            {
+              "id": 113,
+              "type": "text",
+              "name": "Итоговая сумма за заказ",
+              "tooltip": "Текстовый вариант итоговой суммы за заказ",
+              "parent_id": 127,
+              "value": "(два миллиона триста одна тысяча восемьсот) рублей 00 копеек"
+            },
+            {
+              "id": 117,
+              "type": "text",
+              "name": "ФИО Директора Рисопторга",
+              "tooltip": "",
+              "default_value": "Булатов Д.Р.",
+              "parent_id": 127,
+              "value": "Булатов Д.Р."
+            },
+            {
+              "id": 132,
+              "type": "date",
+              "name": "Дата условия оплаты",
+              "tooltip": "",
+              "parent_id": 127,
+              "value": "2026-01-27"
+            },
+            {
+              "id": 122,
+              "type": "date",
+              "name": "Дата отгрузки спецификации",
+              "tooltip": "",
+              "parent_id": 127,
+              "code": "FinalData",
+              "value": "2026-01-30"
+            },
+            {
+              "id": 123,
+              "type": "text",
+              "name": "Комментарий для спецификации",
+              "tooltip": "",
+              "parent_id": 127
+            },
+            {
+              "id": 137,
+              "type": "checkmark",
+              "name": "Условия оплаты (Текст вручную)",
+              "tooltip": "",
+              "parent_id": 127,
+              "value": "unchecked"
+            },
+            {
+              "id": 138,
+              "type": "text",
+              "name": "Условия оплаты",
+              "tooltip": "",
+              "parent_id": 127,
+              "visibility_condition": {
+                "field_id": 0,
+                "condition_type": 11,
+                "value": "",
+                "children": [
+                  {
+                    "field_id": 137,
+                    "condition_type": 3,
+                    "value": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": 134,
+              "type": "checkmark",
+              "name": "В чем отгружается товар (Текст вручную)",
+              "tooltip": "",
+              "parent_id": 127,
+              "value": "unchecked"
+            },
+            {
+              "id": 135,
+              "type": "text",
+              "name": "Товар выгружается ...",
+              "tooltip": "",
+              "parent_id": 127,
+              "visibility_condition": {
+                "field_id": 0,
+                "condition_type": 11,
+                "value": "",
+                "children": [
+                  {
+                    "field_id": 134,
+                    "condition_type": 3,
+                    "value": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": 131,
+              "type": "checkmark",
+              "name": "Товар отгружается в соответствии с наименованием товара (Текст вручную)",
+              "tooltip": "",
+              "parent_id": 127,
+              "value": "checked"
+            },
+            {
+              "id": 130,
+              "type": "text",
+              "name": "Товар отгружается в соответствии с наименованием товара",
+              "tooltip": "",
+              "parent_id": 127,
+              "visibility_condition": {
+                "field_id": 0,
+                "condition_type": 11,
+                "value": "",
+                "children": [
+                  {
+                    "field_id": 131,
+                    "condition_type": 3,
+                    "value": ""
+                  }
+                ]
+              },
+              "value": "Товар отгружается в соответствии с наименованием товара: Рис шлифованный второго сорта ТУ (состав: 33% дроби, 33% целого, 33% битого)."
+            },
+            {
+              "id": 128,
+              "type": "checkmark",
+              "name": "Включительно (Дата отгрузки Текст)",
+              "tooltip": "",
+              "parent_id": 127,
+              "value": "checked"
+            },
+            {
+              "id": 142,
+              "type": "checkmark",
+              "name": "Включительно (Условия оплаты)",
+              "tooltip": "",
+              "parent_id": 127,
+              "visibility_condition": {
+                "field_id": 0,
+                "condition_type": 11,
+                "value": "",
+                "children": [
+                  {
+                    "field_id": 0,
+                    "condition_type": 10,
+                    "value": "",
+                    "children": [
+                      {
+                        "field_id": 6,
+                        "condition_type": 5,
+                        "value": "1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "value": "checked"
+            },
+            {
+              "id": 136,
+              "type": "checkmark",
+              "name": "Включить адрес выгрузки",
+              "tooltip": "",
+              "parent_id": 127,
+              "value": "unchecked"
+            }
+          ]
+        }
+      },
+      {
+        "id": 108,
+        "type": "multiple_choice",
+        "name": "СПАМ",
+        "tooltip": "",
+        "default_value": "0"
+      },
+      {
+        "id": 99,
+        "type": "creation_date",
+        "name": "Дата создания",
+        "tooltip": "",
+        "value": "2026-01-19"
+      },
+      {
+        "id": 79,
+        "type": "text",
+        "name": "Имя отправителя",
+        "tooltip": "",
+        "code": "SenderName"
+      },
+      {
+        "id": 78,
+        "type": "phone",
+        "name": "Номер телефона клиента",
+        "tooltip": "",
+        "code": "PhoneNumberFrom"
+      },
+      {
+        "id": 96,
+        "type": "step",
+        "name": "Этап",
+        "tooltip": "",
+        "value": 8
+      }
+    ],
+    "steps": [
+      {
+        "step": 2,
+        "name": "Новая продажа",
+        "elapsed_time": 27679
+      },
+      {
+        "step": 3,
+        "name": "Согласование спецификации",
+        "elapsed_time": 9948866
+      },
+      {
+        "step": 4,
+        "name": "Запись в график",
+        "elapsed_time": 695
+      },
+      {
+        "step": 5,
+        "name": "Счет сформирован",
+        "elapsed_time": 4424862
+      },
+      {
+        "step": 6,
+        "name": "Счёт на предоплату отправлен",
+        "elapsed_time": 91226075
+      },
+      {
+        "step": 7,
+        "name": "Спецификация подписана",
+        "elapsed_time": 1199737
+      },
+      {
+        "step": 8,
+        "name": "Подготовка продукции ",
+        "elapsed_time": 61163191
+      }
+    ],
+    "comments": [
+      {
+        "id": 2841096527,
+        "text": "Продажа",
+        "formatted_text": "Продажа",
+        "create_date": "2026-01-19T07:05:25Z",
+        "author": {
+          "id": 1163701,
+          "first_name": "Руслан",
+          "last_name": "Рамазанов",
+          "email": "9656484782.risopt@inbox.ru",
+          "type": "user",
+          "banned": false,
+          "rights": 0
+        },
+        "reassigned_to": {
+          "id": 1730,
+          "first_name": "",
+          "last_name": "Pyrus.com",
+          "type": "user"
+        },
+        "field_updates": [
+          {
+            "id": 51,
+            "type": "person",
+            "name": "Ответственный менеджер",
+            "tooltip": "",
+            "value": {
+              "id": 1163701,
+              "first_name": "Руслан",
+              "last_name": "Рамазанов",
+              "email": "9656484782.risopt@inbox.ru",
+              "type": "user",
+              "banned": false,
+              "rights": 0
+            }
+          },
+          {
+            "id": 59,
+            "type": "form_link",
+            "name": "Новый Лид",
+            "tooltip": "",
+            "value": {
+              "task_id": 258526640,
+              "task_ids": [
+                258526640
+              ],
+              "subject": "Новый Лид: ООО ТК \"УРАЛСАХАР\"Руслан РамазановНовый лид получен"
+            }
+          },
+          {
+            "id": 52,
+            "type": "text",
+            "name": "Организация",
+            "tooltip": "",
+            "default_value": "",
+            "value": "ООО ТК \"УРАЛСАХАР\""
+          },
+          {
+            "id": 53,
+            "type": "text",
+            "name": "Адрес (Организация)",
+            "tooltip": "",
+            "related_field_id": 52,
+            "code": "Dadata Organization Address",
+            "value": "454081, Челябинская обл., г. Челябинск, ул. Героев Танкограда, д. 28П , офис 19"
+          },
+          {
+            "id": 54,
+            "type": "text",
+            "name": "ИНН (Организация)",
+            "tooltip": "",
+            "related_field_id": 52,
+            "code": "Dadata Inn",
+            "value": "7447288102"
+          },
+          {
+            "id": 55,
+            "type": "text",
+            "name": "КПП (Организация)",
+            "tooltip": "",
+            "related_field_id": 52,
+            "code": "Dadata Kpp",
+            "value": "744701001"
+          },
+          {
+            "id": 56,
+            "type": "text",
+            "name": "ОГРН (Организация)",
+            "tooltip": "",
+            "related_field_id": 52,
+            "code": "Dadata Ogrn",
+            "value": "1197456010619"
+          },
+          {
+            "id": 7,
+            "type": "multiple_choice",
+            "name": "Тип доставки",
+            "tooltip": "",
+            "default_value": "0",
+            "value": {
+              "choice_id": 5,
+              "choice_ids": [
+                5
+              ],
+              "choice_names": [
+                "Силами поставщика ЖД"
+              ]
+            }
+          },
+          {
+            "id": 103,
+            "type": "phone",
+            "name": "Номер телефона на выгрузке",
+            "tooltip": "",
+            "value": "79525034905"
+          },
+          {
+            "id": 58,
+            "type": "multiple_choice",
+            "name": "Поставщик",
+            "tooltip": "",
+            "value": {
+              "choice_id": 1,
+              "choice_ids": [
+                1
+              ],
+              "choice_names": [
+                "Рисоптторг"
+              ]
+            }
+          },
+          {
+            "id": 4,
+            "type": "file",
+            "name": "Скан-копия договора",
+            "tooltip": "",
+            "value": [
+              {
+                "id": 411214011,
+                "name": "Договор поставки №08-11 2022 ООО ТК Уралсахар - ООО РисОптТорг (подписанный с двух сторон).pdf",
+                "size": 1494796,
+                "version": 1,
+                "md5": "5A1C8398B50D23E2E90AEB79D3916045",
+                "url": "https://pyrus.com/services/attachment?id=411214011"
+              },
+              {
+                "id": 411214012,
+                "name": "Договор  08-12 2025 (подписанный).pdf",
+                "size": 805957,
+                "version": 1,
+                "md5": "3B6D870318D5D4290B32E94020911B7D",
+                "url": "https://pyrus.com/services/attachment?id=411214012"
+              }
+            ]
+          },
+          {
+            "id": 60,
+            "type": "text",
+            "name": "№ Договора",
+            "tooltip": "",
+            "value": "08-12/2025"
+          },
+          {
+            "id": 88,
+            "type": "number",
+            "name": "Общий вес",
+            "tooltip": "",
+            "value": 67700
+          },
+          {
+            "id": 81,
+            "type": "money",
+            "name": "Стоимость доставка общ",
+            "tooltip": "",
+            "value": 380000
+          },
+          {
+            "id": 34,
+            "type": "table",
+            "name": "Заказ",
+            "tooltip": "",
+            "value": [
+              {
+                "row_id": 0,
+                "cells": [
+                  {
+                    "id": 64,
+                    "type": "catalog",
+                    "name": "Прайс",
+                    "tooltip": "",
+                    "parent_id": 34,
+                    "value": {
+                      "item_id": 165022086,
+                      "item_ids": [
+                        165022086
+                      ],
+                      "headers": [
+                        "Номенклатура",
+                        "доп"
+                      ],
+                      "values": [
+                        "Рис ТУ 2 сорт 30%",
+                        ""
+                      ],
+                      "rows": [
+                        [
+                          "Рис ТУ 2 сорт 30%",
+                          ""
+                        ]
+                      ]
+                    }
+                  },
+                  {
+                    "id": 100,
+                    "type": "catalog",
+                    "name": "Упаковка кг.",
+                    "tooltip": "",
+                    "parent_id": 34,
+                    "value": {
+                      "item_id": 167283943,
+                      "item_ids": [
+                        167283943
+                      ],
+                      "headers": [
+                        "Упаковка"
+                      ],
+                      "values": [
+                        "25"
+                      ],
+                      "rows": [
+                        [
+                          "25"
+                        ]
+                      ]
+                    }
+                  },
+                  {
+                    "id": 101,
+                    "type": "multiple_choice",
+                    "name": "Способ погрузки",
+                    "tooltip": "",
+                    "default_value": "0",
+                    "parent_id": 34,
+                    "value": {
+                      "choice_id": 2,
+                      "choice_ids": [
+                        2
+                      ],
+                      "choice_names": [
+                        "Навалом"
+                      ]
+                    }
+                  },
+                  {
+                    "id": 102,
+                    "type": "multiple_choice",
+                    "name": "Доставка",
+                    "tooltip": "",
+                    "default_value": "0",
+                    "parent_id": 34,
+                    "value": {
+                      "choice_id": 1,
+                      "choice_ids": [
+                        1
+                      ],
+                      "choice_names": [
+                        "Силами поставщика"
+                      ]
+                    }
+                  },
+                  {
+                    "id": 36,
+                    "type": "money",
+                    "name": "Цена за кг",
+                    "tooltip": "",
+                    "parent_id": 34,
+                    "value": 28.39
+                  },
+                  {
+                    "id": 37,
+                    "type": "number",
+                    "name": "всего кг",
+                    "tooltip": "",
+                    "parent_id": 34,
+                    "value": 67700
+                  },
+                  {
+                    "id": 63,
+                    "type": "multiple_choice",
+                    "name": "Адрес отгрузки",
+                    "tooltip": "",
+                    "parent_id": 34,
+                    "value": {
+                      "choice_id": 3,
+                      "choice_ids": [
+                        3
+                      ],
+                      "choice_names": [
+                        "Ленинский"
+                      ]
+                    }
+                  },
+                  {
+                    "id": 62,
+                    "type": "date",
+                    "name": "Дата отгрузки",
+                    "tooltip": "",
+                    "parent_id": 34,
+                    "value": "2026-01-22"
+                  },
+                  {
+                    "id": 93,
+                    "type": "number",
+                    "name": "Стоимость доставки",
+                    "tooltip": "",
+                    "parent_id": 34,
+                    "value": 380000
+                  },
+                  {
+                    "id": 40,
+                    "type": "money",
+                    "name": "Стоимость доставки на кг",
+                    "tooltip": "",
+                    "parent_id": 34,
+                    "value": 5.61
+                  },
+                  {
+                    "id": 42,
+                    "type": "money",
+                    "name": "Цена за кг (Дост)",
+                    "tooltip": "",
+                    "parent_id": 34,
+                    "value": 34
+                  },
+                  {
+                    "id": 89,
+                    "type": "money",
+                    "name": "Цена без доставки",
+                    "tooltip": "",
+                    "parent_id": 34,
+                    "value": 1922003
+                  },
+                  {
+                    "id": 38,
+                    "type": "money",
+                    "name": "Цена",
+                    "tooltip": "",
+                    "parent_id": 34,
+                    "value": 2301800
+                  },
+                  {
+                    "id": 41,
+                    "type": "money",
+                    "name": "Итого",
+                    "tooltip": "",
+                    "parent_id": 34,
+                    "value": 2301800
+                  },
+                  {
+                    "id": 95,
+                    "type": "number",
+                    "name": "Расчет",
+                    "tooltip": "",
+                    "parent_id": 34,
+                    "value": 0
+                  },
+                  {
+                    "id": 77,
+                    "type": "money",
+                    "name": "НДС",
+                    "tooltip": "",
+                    "parent_id": 34
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": 61,
+            "type": "date",
+            "name": "Дата договора",
+            "tooltip": "",
+            "value": "2025-12-08"
+          },
+          {
+            "id": 5,
+            "type": "file",
+            "name": "Спецификация",
+            "tooltip": "",
+            "value": [
+              {
+                "id": 411214013,
+                "name": "Спецификация 3 от 19.01.2026 ООО ТК Уралсахар.docx",
+                "size": 16698,
+                "version": 1,
+                "md5": "02BA436AA75019F7F0053333716C4D61",
+                "url": "https://pyrus.com/services/attachment?id=411214013"
+              }
+            ]
+          },
+          {
+            "id": 127,
+            "type": "title",
+            "name": "Поля для авто-формирования спецификации",
+            "tooltip": "",
+            "value": {
+              "fields": [
+                {
+                  "id": 29,
+                  "type": "text",
+                  "name": "№ Спецификации",
+                  "tooltip": "",
+                  "default_value": "0",
+                  "parent_id": 127,
+                  "value": "0"
+                },
+                {
+                  "id": 111,
+                  "type": "text",
+                  "name": "Дата договора (Текст)",
+                  "tooltip": "Текстовый вариант даты договора",
+                  "parent_id": 127,
+                  "value": "«8» декабря 2025 г."
+                },
+                {
+                  "id": 117,
+                  "type": "text",
+                  "name": "ФИО Директора Рисопторга",
+                  "tooltip": "",
+                  "default_value": "Булатов Д.Р.",
+                  "parent_id": 127,
+                  "value": "Булатов Д.Р."
+                }
+              ]
+            }
+          },
+          {
+            "id": 57,
+            "type": "text",
+            "name": "Комментарий по заявке",
+            "tooltip": "",
+            "code": "Message",
+            "value": "Меловые не более 6% !!!"
+          },
+          {
+            "id": 6,
+            "type": "multiple_choice",
+            "name": "Тип оплаты",
+            "tooltip": "",
+            "default_value": "0",
+            "value": {
+              "choice_id": 1,
+              "choice_ids": [
+                1
+              ],
+              "choice_names": [
+                "Предоплата"
+              ]
+            }
+          },
+          {
+            "id": 97,
+            "type": "number",
+            "name": "Скидка",
+            "tooltip": "",
+            "default_value": "0,0000000000",
+            "value": 0
+          },
+          {
+            "id": 33,
+            "type": "date",
+            "name": "Дата прихода ДС по спец",
+            "tooltip": "",
+            "value": "2026-01-21"
+          },
+          {
+            "id": 109,
+            "type": "table",
+            "name": "Адреса доставки",
+            "tooltip": ""
+          },
+          {
+            "id": 15,
+            "type": "multiple_choice",
+            "name": "Статус",
+            "tooltip": "",
+            "code": "Status",
+            "value": {
+              "choice_id": 17,
+              "choice_ids": [
+                17
+              ],
+              "choice_names": [
+                "Новая сделка"
+              ]
+            }
+          },
+          {
+            "id": 108,
+            "type": "multiple_choice",
+            "name": "СПАМ",
+            "tooltip": "",
+            "default_value": "0",
+            "value": {
+              "choice_id": 0,
+              "choice_ids": [
+                0
+              ],
+              "choice_names": [
+                "Не выбрано"
+              ]
+            }
+          }
+        ],
+        "approvals_added": [
+          [
+            {
+              "person": {
+                "id": 1163701,
+                "first_name": "Руслан",
+                "last_name": "Рамазанов",
+                "email": "9656484782.risopt@inbox.ru",
+                "type": "user",
+                "banned": false,
+                "rights": 0
+              },
+              "step": 2
+            }
+          ],
+          [
+            {
+              "person": {
+                "id": 1267927,
+                "first_name": "",
+                "last_name": "РОП или И.О.",
+                "email": "",
+                "type": "role",
+                "banned": false,
+                "rights": 0
+              },
+              "step": 3
+            }
+          ],
+          [
+            {
+              "person": {
+                "id": 656701,
+                "first_name": "Sub-process",
+                "last_name": "",
+                "type": "bot",
+                "web_session_settings": {
+                  "life_span_hours": 24
+                }
+              },
+              "step": 4
+            }
+          ],
+          [
+            {
+              "person": {
+                "id": 1183600,
+                "first_name": "Ирина",
+                "last_name": "Логинова",
+                "email": "risopttorg2019@gmail.com",
+                "type": "user"
+              },
+              "step": 5
+            }
+          ],
+          [
+            {
+              "person": {
+                "id": 1163701,
+                "first_name": "Руслан",
+                "last_name": "Рамазанов",
+                "email": "9656484782.risopt@inbox.ru",
+                "type": "user",
+                "banned": false,
+                "rights": 0
+              },
+              "step": 6
+            }
+          ],
+          [
+            {
+              "person": {
+                "id": 1267927,
+                "first_name": "",
+                "last_name": "РОП или И.О.",
+                "email": "",
+                "type": "role",
+                "banned": false,
+                "rights": 0
+              },
+              "step": 7
+            },
+            {
+              "person": {
+                "id": 1163701,
+                "first_name": "Руслан",
+                "last_name": "Рамазанов",
+                "email": "9656484782.risopt@inbox.ru",
+                "type": "user",
+                "banned": false,
+                "rights": 0
+              },
+              "step": 7
+            }
+          ],
+          [
+            {
+              "person": {
+                "id": 1163701,
+                "first_name": "Руслан",
+                "last_name": "Рамазанов",
+                "email": "9656484782.risopt@inbox.ru",
+                "type": "user",
+                "banned": false,
+                "rights": 0
+              },
+              "step": 8
+            }
+          ],
+          [
+            {
+              "person": {
+                "id": 1163701,
+                "first_name": "Руслан",
+                "last_name": "Рамазанов",
+                "email": "9656484782.risopt@inbox.ru",
+                "type": "user",
+                "banned": false,
+                "rights": 0
+              },
+              "step": 9
+            }
+          ],
+          [
+            {
+              "person": {
+                "id": 1163701,
+                "first_name": "Руслан",
+                "last_name": "Рамазанов",
+                "email": "9656484782.risopt@inbox.ru",
+                "type": "user",
+                "banned": false,
+                "rights": 0
+              },
+              "step": 10
+            }
+          ],
+          [
+            {
+              "person": {
+                "id": 1163701,
+                "first_name": "Руслан",
+                "last_name": "Рамазанов",
+                "email": "9656484782.risopt@inbox.ru",
+                "type": "user",
+                "banned": false,
+                "rights": 0
+              },
+              "step": 12
+            }
+          ]
+        ]
+      },
+      {
+        "id": 2841096814,
+        "create_date": "2026-01-19T07:05:35Z",
+        "author": {
+          "id": 1163701,
+          "first_name": "Руслан",
+          "last_name": "Рамазанов",
+          "email": "9656484782.risopt@inbox.ru",
+          "type": "user",
+          "banned": false,
+          "rights": 0
+        },
+        "reassigned_to": {
+          "id": 1163701,
+          "first_name": "Руслан",
+          "last_name": "Рамазанов",
+          "email": "9656484782.risopt@inbox.ru",
+          "type": "user",
+          "banned": false,
+          "rights": 0
+        }
+      },
+      {
+        "id": 2841097311,
+        "create_date": "2026-01-19T07:05:51Z",
+        "author": {
+          "id": 1163701,
+          "first_name": "Руслан",
+          "last_name": "Рамазанов",
+          "email": "9656484782.risopt@inbox.ru",
+          "type": "user",
+          "banned": false,
+          "rights": 0
+        },
+        "field_updates": [
+          {
+            "id": 11,
+            "type": "money",
+            "name": "Сумма предоплаты",
+            "tooltip": "",
+            "value": 2301800
+          },
+          {
+            "id": 127,
+            "type": "title",
+            "name": "Поля для авто-формирования спецификации",
+            "tooltip": "",
+            "value": {
+              "fields": [
+                {
+                  "id": 112,
+                  "type": "text",
+                  "name": "Дата составления",
+                  "tooltip": "Дата составления спецификации",
+                  "parent_id": 127,
+                  "value": "«19» январь 2026 года"
+                },
+                {
+                  "id": 113,
+                  "type": "text",
+                  "name": "Итоговая сумма за заказ",
+                  "tooltip": "Текстовый вариант итоговой суммы за заказ",
+                  "parent_id": 127,
+                  "value": "(два миллиона триста одна тысяча восемьсот) рублей 00 копеек"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": 2841097347,
+        "create_date": "2026-01-19T07:05:53Z",
+        "author": {
+          "id": 1163701,
+          "first_name": "Руслан",
+          "last_name": "Рамазанов",
+          "email": "9656484782.risopt@inbox.ru",
+          "type": "user",
+          "banned": false,
+          "rights": 0
+        },
+        "approval_choice": "approved",
+        "changed_step": 3
+      },
+      {
+        "id": 2841176248,
+        "create_date": "2026-01-19T07:48:46Z",
+        "author": {
+          "id": 1163701,
+          "first_name": "Руслан",
+          "last_name": "Рамазанов",
+          "email": "9656484782.risopt@inbox.ru",
+          "type": "user",
+          "banned": false,
+          "rights": 0
+        },
+        "field_updates": [
+          {
+            "id": 5,
+            "type": "file",
+            "name": "Спецификация",
+            "tooltip": "",
+            "value": [
+              {
+                "id": 411228528,
+                "name": "Спецификация 3 от 19.01.2026 ООО ТК Уралсахар.docx",
+                "size": 16720,
+                "version": 2,
+                "root_id": 411214013,
+                "md5": "9CC9EA9897DA0D318B97E1DB81495C91",
+                "url": "https://pyrus.com/services/attachment?id=411228528"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2841176831,
+        "create_date": "2026-01-19T07:49:06Z",
+        "author": {
+          "id": 1163701,
+          "first_name": "Руслан",
+          "last_name": "Рамазанов",
+          "email": "9656484782.risopt@inbox.ru",
+          "type": "user",
+          "banned": false,
+          "rights": 0
+        },
+        "field_updates": [
+          {
+            "id": 34,
+            "type": "table",
+            "name": "Заказ",
+            "tooltip": "",
+            "value": [
+              {
+                "row_id": 0,
+                "cells": [
+                  {
+                    "id": 62,
+                    "type": "date",
+                    "name": "Дата отгрузки",
+                    "tooltip": "",
+                    "parent_id": 34,
+                    "value": "2026-01-28"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2841177030,
+        "create_date": "2026-01-19T07:49:12Z",
+        "author": {
+          "id": 1163701,
+          "first_name": "Руслан",
+          "last_name": "Рамазанов",
+          "email": "9656484782.risopt@inbox.ru",
+          "type": "user",
+          "banned": false,
+          "rights": 0
+        },
+        "field_updates": [
+          {
+            "id": 33,
+            "type": "date",
+            "name": "Дата прихода ДС по спец",
+            "tooltip": "",
+            "value": "2026-01-27"
+          }
+        ]
+      },
+      {
+        "id": 2841422067,
+        "create_date": "2026-01-19T09:51:41Z",
+        "author": {
+          "id": 1163692,
+          "first_name": "Аркадий",
+          "last_name": "Нямуков",
+          "email": "risopt.str@gmail.com",
+          "type": "user",
+          "department_id": 163369723,
+          "banned": false,
+          "rights": 8191
+        },
+        "approval_choice": "approved",
+        "changed_step": 4,
+        "comment_as_roles": [
+          {
+            "id": 1267927,
+            "name": "РОП или И.О.",
+            "type": "role"
+          }
+        ]
+      },
+      {
+        "id": 2841422093,
+        "create_date": "2026-01-19T09:51:42Z",
+        "author": {
+          "id": 656701,
+          "first_name": "Sub-process",
+          "last_name": "",
+          "type": "bot",
+          "web_session_settings": {
+            "life_span_hours": 24
+          }
+        },
+        "approval_choice": "approved",
+        "changed_step": 5
+      },
+      {
+        "id": 2841565806,
+        "create_date": "2026-01-19T11:05:20Z",
+        "author": {
+          "id": 1183600,
+          "first_name": "Ирина",
+          "last_name": "Логинова",
+          "email": "risopttorg2019@gmail.com",
+          "type": "user"
+        },
+        "field_updates": [
+          {
+            "id": 5,
+            "type": "file",
+            "name": "Спецификация",
+            "tooltip": "",
+            "value": [
+              {
+                "id": 411288421,
+                "name": "Уралсахар.pdf",
+                "size": 2405469,
+                "version": 1,
+                "md5": "FA25279BA6F78BDECE4999E4BC86A579",
+                "url": "https://pyrus.com/services/attachment?id=411288421"
+              }
+            ]
+          },
+          {
+            "id": 15,
+            "type": "multiple_choice",
+            "name": "Статус",
+            "tooltip": "",
+            "code": "Status",
+            "value": {
+              "choice_id": 8,
+              "choice_ids": [
+                8
+              ],
+              "choice_names": [
+                "Счет сформирован"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": 2841566044,
+        "create_date": "2026-01-19T11:05:27Z",
+        "author": {
+          "id": 1183600,
+          "first_name": "Ирина",
+          "last_name": "Логинова",
+          "email": "risopttorg2019@gmail.com",
+          "type": "user"
+        },
+        "approval_choice": "approved",
+        "changed_step": 6
+      },
+      {
+        "id": 2842788876,
+        "create_date": "2026-01-20T06:34:59Z",
+        "author": {
+          "id": 1181091,
+          "first_name": "Администратор",
+          "last_name": "",
+          "email": "masha25mary@gmail.com",
+          "type": "user",
+          "banned": false,
+          "rights": 6143
+        },
+        "field_updates": [
+          {
+            "id": 15,
+            "type": "multiple_choice",
+            "name": "Статус",
+            "tooltip": "",
+            "code": "Status",
+            "value": {
+              "choice_id": 9,
+              "choice_ids": [
+                9
+              ],
+              "choice_names": [
+                "Счёт на предоплату отправлен"
+              ]
+            }
+          },
+          {
+            "id": 127,
+            "type": "title",
+            "name": "Поля для авто-формирования спецификации",
+            "tooltip": "",
+            "value": {
+              "fields": [
+                {
+                  "id": 140,
+                  "type": "text",
+                  "name": "Станция назначения",
+                  "tooltip": "",
+                  "parent_id": 127,
+                  "value": "Челябинск-Южный ЮУр.ж.д. 800605, Грузополучатель: ООО МАКИЗ15762922 (9713), Почтовый адрес грузополучателя: 456655, Челябинская обл., г. Копейск, ул. Куйбышева д.37 корп. Б, тел/факс: 8 (35139) 4 10 91."
+                },
+                {
+                  "id": 133,
+                  "type": "multiple_choice",
+                  "name": "Адрес отгрузки спецификации",
+                  "tooltip": "",
+                  "parent_id": 127,
+                  "value": {
+                    "choice_id": 3,
+                    "choice_ids": [
+                      3
+                    ],
+                    "choice_names": [
+                      "Ленинский"
+                    ]
+                  }
+                },
+                {
+                  "id": 132,
+                  "type": "date",
+                  "name": "Дата условия оплаты",
+                  "tooltip": "",
+                  "parent_id": 127,
+                  "value": "2026-01-27"
+                },
+                {
+                  "id": 122,
+                  "type": "date",
+                  "name": "Дата отгрузки спецификации",
+                  "tooltip": "",
+                  "parent_id": 127,
+                  "code": "FinalData",
+                  "value": "2026-01-30"
+                },
+                {
+                  "id": 128,
+                  "type": "checkmark",
+                  "name": "Включительно (Дата отгрузки Текст)",
+                  "tooltip": "",
+                  "parent_id": 127,
+                  "value": "checked"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": 2842789585,
+        "create_date": "2026-01-20T06:35:30Z",
+        "author": {
+          "id": 1181091,
+          "first_name": "Администратор",
+          "last_name": "",
+          "email": "masha25mary@gmail.com",
+          "type": "user",
+          "banned": false,
+          "rights": 6143
+        },
+        "field_updates": [
+          {
+            "id": 127,
+            "type": "title",
+            "name": "Поля для авто-формирования спецификации",
+            "tooltip": "",
+            "value": {
+              "fields": [
+                {
+                  "id": 131,
+                  "type": "checkmark",
+                  "name": "Товар отгружается в соответствии с наименованием товара (Текст вручную)",
+                  "tooltip": "",
+                  "parent_id": 127,
+                  "value": "checked"
+                },
+                {
+                  "id": 130,
+                  "type": "text",
+                  "name": "Товар отгружается в соответствии с наименованием товара",
+                  "tooltip": "",
+                  "parent_id": 127,
+                  "value": "Товар отгружается в соответствии с наименованием товара: Рис шлифованный второго сорта ТУ (состав: 33% дроби, 33% целого, 33% битого)."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": 2842789644,
+        "create_date": "2026-01-20T06:35:32Z",
+        "author": {
+          "id": 1181091,
+          "first_name": "Администратор",
+          "last_name": "",
+          "email": "masha25mary@gmail.com",
+          "type": "user",
+          "banned": false,
+          "rights": 6143
+        },
+        "subscribers_added": [
+          {
+            "id": 1239059,
+            "first_name": "Бот",
+            "last_name": "",
+            "email": "bot@cef27e32-ee34-40fa-b2eb-2a1f9332006a",
+            "type": "bot",
+            "banned": false,
+            "rights": 8191
+          }
+        ]
+      },
+      {
+        "id": 2842797471,
+        "create_date": "2026-01-20T06:40:45Z",
+        "author": {
+          "id": 1181091,
+          "first_name": "Администратор",
+          "last_name": "",
+          "email": "masha25mary@gmail.com",
+          "type": "user",
+          "banned": false,
+          "rights": 6143
+        },
+        "subscribers_removed": [
+          {
+            "id": 1239059,
+            "first_name": "Бот",
+            "last_name": "",
+            "email": "bot@cef27e32-ee34-40fa-b2eb-2a1f9332006a",
+            "type": "bot",
+            "banned": false,
+            "rights": 8191
+          }
+        ]
+      },
+      {
+        "id": 2842797507,
+        "create_date": "2026-01-20T06:40:46Z",
+        "author": {
+          "id": 1181091,
+          "first_name": "Администратор",
+          "last_name": "",
+          "email": "masha25mary@gmail.com",
+          "type": "user",
+          "banned": false,
+          "rights": 6143
+        },
+        "subscribers_added": [
+          {
+            "id": 1239059,
+            "first_name": "Бот",
+            "last_name": "",
+            "email": "bot@cef27e32-ee34-40fa-b2eb-2a1f9332006a",
+            "type": "bot",
+            "banned": false,
+            "rights": 8191
+          }
+        ]
+      },
+      {
+        "id": 2842800256,
+        "create_date": "2026-01-20T06:42:46Z",
+        "author": {
+          "id": 1181091,
+          "first_name": "Администратор",
+          "last_name": "",
+          "email": "masha25mary@gmail.com",
+          "type": "user",
+          "banned": false,
+          "rights": 6143
+        },
+        "subscribers_removed": [
+          {
+            "id": 1239059,
+            "first_name": "Бот",
+            "last_name": "",
+            "email": "bot@cef27e32-ee34-40fa-b2eb-2a1f9332006a",
+            "type": "bot",
+            "banned": false,
+            "rights": 8191
+          }
+        ]
+      },
+      {
+        "id": 2842800712,
+        "create_date": "2026-01-20T06:43:06Z",
+        "author": {
+          "id": 1181091,
+          "first_name": "Администратор",
+          "last_name": "",
+          "email": "masha25mary@gmail.com",
+          "type": "user",
+          "banned": false,
+          "rights": 6143
+        },
+        "field_updates": [
+          {
+            "id": 127,
+            "type": "title",
+            "name": "Поля для авто-формирования спецификации",
+            "tooltip": "",
+            "value": {
+              "fields": [
+                {
+                  "id": 142,
+                  "type": "checkmark",
+                  "name": "Включительно (Условия оплаты)",
+                  "tooltip": "",
+                  "parent_id": 127,
+                  "value": "checked"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": 2842800796,
+        "create_date": "2026-01-20T06:43:10Z",
+        "author": {
+          "id": 1181091,
+          "first_name": "Администратор",
+          "last_name": "",
+          "email": "masha25mary@gmail.com",
+          "type": "user",
+          "banned": false,
+          "rights": 6143
+        },
+        "subscribers_added": [
+          {
+            "id": 1239059,
+            "first_name": "Бот",
+            "last_name": "",
+            "email": "bot@cef27e32-ee34-40fa-b2eb-2a1f9332006a",
+            "type": "bot",
+            "banned": false,
+            "rights": 8191
+          }
+        ]
+      },
+      {
+        "id": 2843229791,
+        "create_date": "2026-01-20T10:20:46Z",
+        "author": {
+          "id": 1163701,
+          "first_name": "Руслан",
+          "last_name": "Рамазанов",
+          "email": "9656484782.risopt@inbox.ru",
+          "type": "user",
+          "banned": false,
+          "rights": 0
+        },
+        "field_updates": [
+          {
+            "id": 34,
+            "type": "table",
+            "name": "Заказ",
+            "tooltip": "",
+            "value": [
+              {
+                "row_id": 0,
+                "cells": [
+                  {
+                    "id": 62,
+                    "type": "date",
+                    "name": "Дата отгрузки",
+                    "tooltip": "",
+                    "parent_id": 34,
+                    "value": "2026-01-30"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2843229992,
+        "create_date": "2026-01-20T10:20:53Z",
+        "author": {
+          "id": 1239059,
+          "first_name": "Бот",
+          "last_name": "",
+          "email": "bot@cef27e32-ee34-40fa-b2eb-2a1f9332006a",
+          "type": "bot",
+          "banned": false,
+          "rights": 8191
+        },
+        "attachments": [
+          {
+            "id": 411502549,
+            "name": "тестовая спецификация.docx",
+            "size": 14882,
+            "version": 1,
+            "md5": "82573D20B6AA906FCA87B80B16049AD1",
+            "url": "https://pyrus.com/services/attachment?id=411502549"
+          }
+        ]
+      },
+      {
+        "id": 2843264376,
+        "create_date": "2026-01-20T10:39:03Z",
+        "author": {
+          "id": 1163701,
+          "first_name": "Руслан",
+          "last_name": "Рамазанов",
+          "email": "9656484782.risopt@inbox.ru",
+          "type": "user",
+          "banned": false,
+          "rights": 0
+        },
+        "field_updates": [
+          {
+            "id": 34,
+            "type": "table",
+            "name": "Заказ",
+            "tooltip": "",
+            "value": [
+              {
+                "row_id": 0,
+                "cells": [
+                  {
+                    "id": 62,
+                    "type": "date",
+                    "name": "Дата отгрузки",
+                    "tooltip": "",
+                    "parent_id": 34,
+                    "value": "2026-01-23"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2843264588,
+        "create_date": "2026-01-20T10:39:09Z",
+        "author": {
+          "id": 1239059,
+          "first_name": "Бот",
+          "last_name": "",
+          "email": "bot@cef27e32-ee34-40fa-b2eb-2a1f9332006a",
+          "type": "bot",
+          "banned": false,
+          "rights": 8191
+        },
+        "attachments": [
+          {
+            "id": 411509490,
+            "name": "тестовая спецификация.docx",
+            "size": 14882,
+            "version": 1,
+            "md5": "EAF92451319D190859A7476DA0C4E78D",
+            "url": "https://pyrus.com/services/attachment?id=411509490"
+          }
+        ]
+      },
+      {
+        "id": 2843505996,
+        "create_date": "2026-01-20T12:25:52Z",
+        "author": {
+          "id": 1163701,
+          "first_name": "Руслан",
+          "last_name": "Рамазанов",
+          "email": "9656484782.risopt@inbox.ru",
+          "type": "user",
+          "banned": false,
+          "rights": 0
+        },
+        "field_updates": [
+          {
+            "id": 5,
+            "type": "file",
+            "name": "Спецификация",
+            "tooltip": "",
+            "value": [
+              {
+                "id": 411542970,
+                "name": "Спец 3 (подписанная).PDF",
+                "size": 320661,
+                "version": 1,
+                "md5": "7A965B45ABA1536A86335BFA145C036C",
+                "url": "https://pyrus.com/services/attachment?id=411542970"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2843506050,
+        "create_date": "2026-01-20T12:25:53Z",
+        "author": {
+          "id": 1163701,
+          "first_name": "Руслан",
+          "last_name": "Рамазанов",
+          "email": "9656484782.risopt@inbox.ru",
+          "type": "user",
+          "banned": false,
+          "rights": 0
+        },
+        "approval_choice": "approved",
+        "changed_step": 7
+      },
+      {
+        "id": 2843506142,
+        "create_date": "2026-01-20T12:25:55Z",
+        "author": {
+          "id": 1163701,
+          "first_name": "Руслан",
+          "last_name": "Рамазанов",
+          "email": "9656484782.risopt@inbox.ru",
+          "type": "user",
+          "banned": false,
+          "rights": 0
+        },
+        "field_updates": [
+          {
+            "id": 15,
+            "type": "multiple_choice",
+            "name": "Статус",
+            "tooltip": "",
+            "code": "Status",
+            "value": {
+              "choice_id": 10,
+              "choice_ids": [
+                10
+              ],
+              "choice_names": [
+                "Спецификация подписана"
+              ]
+            }
+          }
+        ],
+        "approval_choice": "approved"
+      },
+      {
+        "id": 2843552872,
+        "create_date": "2026-01-20T12:45:53Z",
+        "author": {
+          "id": 1213113,
+          "first_name": "Ришат",
+          "last_name": "Ахметвалиев",
+          "email": "Hondacivic102@mail.ru",
+          "type": "user",
+          "department_id": 163369723,
+          "avatar_id": 127192,
+          "banned": false,
+          "position": "Менеджер отдела продаж",
+          "messenger": {
+            "type": "Internet",
+            "nickname": "Ришат ООО РисОптТорг"
+          },
+          "phone": "214",
+          "birth_date": {
+            "day": 6,
+            "month": 1
+          },
+          "rights": 0
+        },
+        "approval_choice": "approved",
+        "changed_step": 8,
+        "comment_as_roles": [
+          {
+            "id": 1267927,
+            "name": "РОП или И.О.",
+            "type": "role"
+          }
+        ]
+      },
+      {
+        "id": 2846830702,
+        "create_date": "2026-01-22T11:45:16Z",
+        "author": {
+          "id": 1163701,
+          "first_name": "Руслан",
+          "last_name": "Рамазанов",
+          "email": "9656484782.risopt@inbox.ru",
+          "type": "user",
+          "banned": false,
+          "rights": 0
+        },
+        "field_updates": [
+          {
+            "id": 34,
+            "type": "table",
+            "name": "Заказ",
+            "tooltip": "",
+            "value": [
+              {
+                "row_id": 0,
+                "cells": [
+                  {
+                    "id": 82,
+                    "type": "checkmark",
+                    "name": "Оплачено",
+                    "tooltip": "",
+                    "parent_id": 34,
+                    "value": "checked"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "type": "checkmark",
+            "name": "Получена предоплата",
+            "tooltip": "",
+            "value": "checked"
+          }
+        ]
+      }
+    ],
+    "is_closed": false
+  },
+  "api_url": "https://api.pyrus.com/v4/",
+  "files_url": "https://files.pyrus.com/"
+}
