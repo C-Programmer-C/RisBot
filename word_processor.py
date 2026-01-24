@@ -1685,6 +1685,6 @@ def process_word_template(
                 for cell in row.cells:
                     replace_placeholders_in_table_cell(cell, fields_map)
     
-    logger.info(f"Saving document to {output_path}")
-    doc.save(output_path)
-    logger.info("Document saved successfully")
+    # logger.info(f"Saving document to {output_path}")
+    # doc.save(output_path)
+    # logger.info("Document saved successfully")

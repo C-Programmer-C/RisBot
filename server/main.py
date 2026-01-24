@@ -203,7 +203,7 @@ async def process_webhook(
         logger.info(f"Word document generated successfully: {output_path}")
         
         # Загружаем файл в Pyrus
-        filename = "тестовая спецификация.docx"
+        filename = "Спецификация.docx"
         logger.info(f"Uploading file {output_path} to Pyrus as '{filename}'")
         file_guid = await upload_file_to_pyrus(output_path, filename)
         
