@@ -4,7 +4,6 @@ import json
 import logging
 from pathlib import Path
 from typing import Any, Optional
-from bot_client import BotClient
 from config import conf_logger, settings
 from fastapi import FastAPI, Header, HTTPException, Request, status
 from fastapi.responses import JSONResponse
