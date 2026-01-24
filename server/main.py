@@ -217,6 +217,14 @@ async def process_webhook(
                 logger.error(f"Failed to attach file to task {task_id}")
         else:
             logger.error(f"Failed to upload file to Pyrus")
+        
+        # Удаляем временный файл после загрузки
+        try:
+            if output_path.exists():
+                output_path.unlink()
+                logger.info(f"Temporary file {output_path} deleted successfully")
+        except Exception as e:
+            logger.warning(f"Failed to delete temporary file {output_path}: {e}")
 
     except Exception as e:
         logger.exception('Error processing webhook')
