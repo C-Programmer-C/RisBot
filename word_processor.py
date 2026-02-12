@@ -1079,11 +1079,15 @@ def group_rows_by_product(rows_data: list[dict[str, Any]]) -> list[dict[str, Any
             try:
                 price_value = extract_field_value(grouped[product_name].get("Цена_raw", {}), return_numeric=True)
                 grouped[product_name]["_total_price"] = float(price_value) if price_value else 0.0
+
+                kg_value = extract_field_value(grouped[product_name].get("всего кг_raw", {}), return_numeric=True)
+                grouped[product_name]["_total_kg"] = float(kg_value) if kg_value else 0.0
                 
                 price_per_kg_value = extract_field_value(grouped[product_name].get("Цена за кг (Дост)_raw", {}), return_numeric=True)
                 grouped[product_name]["_price_per_kg"] = float(price_per_kg_value) if price_per_kg_value else 0.0
             except:
                 grouped[product_name]["_total_price"] = 0.0
+                grouped[product_name]["_total_kg"] = 0.0
                 grouped[product_name]["_price_per_kg"] = 0.0
         else:
             grouped[product_name]["_count"] += 1
@@ -1092,9 +1096,19 @@ def group_rows_by_product(rows_data: list[dict[str, Any]]) -> list[dict[str, Any
                 grouped[product_name]["_total_price"] += float(price_value) if price_value else 0.0
             except:
                 pass
+            try:
+                kg_value = extract_field_value(row_map.get("всего кг_raw", {}), return_numeric=True)
+                grouped[product_name]["_total_kg"] += float(kg_value) if kg_value else 0.0
+            except:
+                pass
     
     result = []
     for product_name, row_data in grouped.items():
+        total_kg = row_data.get("_total_kg", 0.0)
+        if isinstance(total_kg, (int, float)) and float(total_kg).is_integer():
+            row_data["всего кг"] = str(int(float(total_kg)))
+        else:
+            row_data["всего кг"] = str(total_kg)
         row_data["Цена"] = format_money(row_data["_total_price"], with_spaces=True)
         row_data["Цена за кг (Дост)"] = format_money(row_data.get("_price_per_kg", 0.0), with_spaces=False)
         result.append(row_data)
