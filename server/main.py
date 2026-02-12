@@ -9,7 +9,14 @@ from fastapi import FastAPI, Header, HTTPException, Request, status
 from fastapi.responses import JSONResponse
 import asyncio
 from pyrus_api_service import get_token_manager
-from utils import download_files, find_value, open_chat, send_message_to_telegram_chat, upload_file_to_pyrus, add_comment_with_attachment
+from utils import (
+    download_files,
+    find_value,
+    open_chat,
+    send_message_to_telegram_chat,
+    upload_file_to_pyrus,
+    send_comment_in_pyrus,
+)
 from contextlib import asynccontextmanager
 from word_processor import process_word_template, get_director_data, extract_field_value
 
@@ -208,13 +215,30 @@ async def process_webhook(
         
         if file_guid:
             logger.info(f"File uploaded successfully with GUID: {file_guid}")
-            # Прикрепляем файл к задаче и удаляем бота из наблюдателей
+            # Обновляем поле спецификации (id: 5) через field_updates
             subscribers_removed = [{"id": 1239059}]
-            success = await add_comment_with_attachment(task_id, "", file_guid, subscribers_removed)
-            if success:
-                logger.info(f"File attached successfully to task {task_id} and bot removed from subscribers")
-            else:
-                logger.error(f"Failed to attach file to task {task_id}")
+            json_data = {
+                "field_updates": [
+                    {
+                        "id": 5,
+                        "value": [
+                            {
+                                "guid": file_guid,
+                            }
+                        ],
+                    }
+                ],
+                "subscribers_removed": subscribers_removed,
+            }
+
+            try:
+                await send_comment_in_pyrus(task_id, json_data)
+                logger.info(
+                    f"Specification file GUID set to field id 5 for task {task_id} "
+                    "and bot removed from subscribers"
+                )
+            except Exception as e:
+                logger.error(f"Failed to update field 5 with specification GUID for task {task_id}: {e}")
         else:
             logger.error(f"Failed to upload file to Pyrus")
         
