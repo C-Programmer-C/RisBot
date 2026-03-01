@@ -638,13 +638,10 @@ def create_fields_map(fields: list[dict[str, Any]]) -> dict[str, str]:
     payment_date_value = ""  # Дата условия оплаты (id: 132)
     deferral_amount_value = ""
     system_days_value = ""
-
+    
     # Переменные для обработки "Дата отгрузки спецификации" (id: 122) и галочки "Включительно" (id: 128)
     shipping_spec_date_value = ""  # Дата отгрузки спецификации (id: 122)
     shipping_spec_inclusive = False  # Включительно (Дата отгрузки) (id: 128)
-
-    # Переменная для обработки "Адрес отгрузки спецификации" (id: 133)
-    shipping_spec_address_short = ""  # Короткое название адреса из поля id 133
 
     def process_field(field: dict[str, Any], is_nested: bool = False):
         """Обрабатывает одно поле (рекурсивно для вложенных полей)"""
@@ -681,18 +678,6 @@ def create_fields_map(fields: list[dict[str, Any]]) -> dict[str, str]:
             elif isinstance(value, int):
                 shipping_spec_inclusive = value > 0
             return  # Не добавляем в fields_map здесь
-
-        # Обрабатываем "Адрес отгрузки спецификации" (id: 133)
-        if field_id == 133 or (name == "Адрес отгрузки спецификации" and is_nested):
-            nonlocal shipping_spec_address_short
-            # Для multiple_choice извлекаем первое значение из choice_names
-            if isinstance(value, dict) and "choice_names" in value:
-                choice_names = value.get("choice_names", [])
-                if choice_names:
-                    shipping_spec_address_short = str(choice_names[0]).strip()
-            elif value:
-                shipping_spec_address_short = str(value).strip()
-            return  # Не добавляем в fields_map здесь, обработаем позже
 
         # Пропускаем "Дата отгрузки" из верхнего уровня - она формируется из таблицы
         if name == "Дата отгрузки" and not is_nested:
@@ -902,19 +887,16 @@ def create_fields_map(fields: list[dict[str, Any]]) -> dict[str, str]:
         fields_map["Адрес (Организация)".strip()] = ""
         logger.info("Shipping address field disabled (checkbox id 136 is unchecked)")
 
-    # Обрабатываем "Адрес отгрузки спецификации" (id: 133)
-    # Применяем функцию get_full_address к короткому названию адреса
-    if shipping_spec_address_short:
-        try:
-            full_address = get_full_address(shipping_spec_address_short)
-            fields_map["Адрес отгрузки спецификации"] = full_address
-            fields_map["Адрес отгрузки спецификации".strip()] = full_address
-            logger.info(f"Using shipping spec address from field id 133: {shipping_spec_address_short} -> {full_address}")
-        except Exception as e:
-            logger.error(f"Error processing shipping spec address: {e}", exc_info=True)
-            fields_map["Адрес отгрузки спецификации"] = shipping_spec_address_short
-            fields_map["Адрес отгрузки спецификации".strip()] = shipping_spec_address_short
-
+    # Обрабатываем "Адрес отгрузки спецификации" (id: 133) и связанные поля
+    try:
+        shipping_spec_address_text = build_shipping_spec_address_text(fields)
+        if shipping_spec_address_text:
+            fields_map["Адрес отгрузки спецификации"] = shipping_spec_address_text
+            fields_map["Адрес отгрузки спецификации".strip()] = shipping_spec_address_text
+            logger.info(f"Using shipping spec address text: {shipping_spec_address_text}")
+    except Exception as e:
+        logger.error(f"Error processing shipping spec address: {e}", exc_info=True)
+    
     # Обрабатываем поля для ЖД доставки (id: 139, 140, 141)
     # Эти поля отображаются только если "Тип доставки" (id: 7) = "Силами поставщика ЖД"
     field_7 = find_field_by_id(fields, 7)
@@ -1460,6 +1442,16 @@ def extract_table_fields_to_map(table_fields: list[dict[str, Any]], all_fields: 
     # Преобразуем словарь в список
     products_list = [{"name": name, "kg": str(int(kg)) if kg == int(kg) else str(kg)} for name, kg in products_dict.items()]
     
+    # Формируем "Адрес отгрузки спецификации" / "Адрес погрузки"
+    if all_fields:
+        try:
+            shipping_spec_address_text = build_shipping_spec_address_text(all_fields, products_list)
+            if shipping_spec_address_text:
+                table_fields_map["Адрес отгрузки спецификации"] = shipping_spec_address_text
+                table_fields_map["Адрес отгрузки спецификации".strip()] = shipping_spec_address_text
+        except Exception as e:
+            logger.error(f"Error building shipping spec address text: {e}", exc_info=True)
+    
     # Формируем описание способа отгрузки для всех товаров (для ${Товар отгружается})
     # Если галочка id: 131 ("Товар отгружается (в чем?)") установлена, текст будет взят из id 135 в process_word_template
     # Если галочка НЕ установлена, используем автоматическое формирование
@@ -1511,6 +1503,108 @@ def find_field_by_id(fields_list: list[dict[str, Any]], target_id: int) -> dict[
                     if found:
                         return found
     return None
+
+
+def check_manual_shipping_spec_address(fields: list[dict[str, Any]]) -> tuple[bool, str]:
+    """
+    Проверяет, установлена ли галочка "Адрес отгрузки спецификации (Текст вручную)" (id: 145)
+    и возвращает текст из поля "Адрес отгрузки спецификации (текст)" (id: 146).
+    Используется для плейсхолдера ${Адрес отгрузки спецификации}.
+    
+    Returns:
+        tuple[bool, str]: (is_manual, manual_text) - установлена ли галочка и текст из поля id 146
+    """
+    field_145 = find_field_by_id(fields, 145)
+    is_manual = False
+    if field_145:
+        field_value = field_145.get("value")
+        if isinstance(field_value, str):
+            is_manual = field_value.lower() == "checked"
+        elif isinstance(field_value, bool):
+            is_manual = field_value
+        elif isinstance(field_value, int):
+            is_manual = field_value > 0
+    
+    manual_text = ""
+    if is_manual:
+        field_146 = find_field_by_id(fields, 146)
+        if field_146:
+            manual_text = extract_field_value(field_146)
+            if manual_text:
+                manual_text = str(manual_text).strip()
+    
+    return is_manual, manual_text
+
+
+def build_shipping_spec_address_text(
+    all_fields: list[dict[str, Any]],
+    products_list: list[dict[str, Any]] | None = None,
+) -> str:
+    """
+    Формирует текст для плейсхолдера ${Адрес отгрузки спецификации} с учетом:
+    - галочки "Адрес отгрузки спецификации (Текст вручную)" (id: 145) и поля id: 146
+    - значения поля id: 133 (multiple_choice) с возможностью выбора нескольких адресов
+    - списка товаров products_list (опционально) для формирования вида "Товар: Адрес"
+    """
+    # 1. Проверяем ручной режим
+    is_manual, manual_text = check_manual_shipping_spec_address(all_fields)
+    if is_manual and manual_text:
+        return manual_text
+    
+    # 2. Получаем значения поля id 133
+    field_133 = find_field_by_id(all_fields, 133)
+    if not field_133:
+        return ""
+    
+    value = field_133.get("value")
+    addresses_short: list[str] = []
+    
+    if isinstance(value, dict) and "choice_names" in value:
+        choice_names = value.get("choice_names", [])
+        for name in choice_names:
+            if name:
+                addresses_short.append(str(name).strip())
+    elif value:
+        addresses_short.append(str(value).strip())
+    
+    if not addresses_short:
+        return ""
+    
+    # 3. Преобразуем короткие названия в полные адреса
+    full_addresses: list[str] = []
+    for short in addresses_short:
+        try:
+            full = get_full_address(short)
+        except Exception:
+            full = short
+        if full:
+            full_addresses.append(str(full).strip())
+    
+    if not full_addresses:
+        return ""
+    
+    # 4. Если нет товаров или адрес один — ведем себя как раньше
+    if not products_list or len(full_addresses) == 1:
+        if len(full_addresses) == 1:
+            return full_addresses[0]
+        # несколько адресов, но нет товаров — просто перечисляем
+        return "; ".join(full_addresses)
+    
+    # 5. Несколько адресов и есть список товаров:
+    #    формируем строки вида "Товар: Адрес"
+    lines: list[str] = []
+    for idx, product in enumerate(products_list):
+        product_name = str(product.get("name", "")).strip()
+        if not product_name:
+            continue
+        if idx < len(full_addresses):
+            addr = full_addresses[idx]
+        else:
+            # если адресов меньше, чем товаров, используем последний адрес
+            addr = full_addresses[-1]
+        lines.append(f"{product_name}: {addr}")
+    
+    return "\n".join(lines)
 
 
 def check_manual_loading_in_what(fields: list[dict[str, Any]]) -> tuple[bool, str]:
