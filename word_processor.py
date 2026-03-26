@@ -1779,11 +1779,14 @@ def process_word_template(
         buyer_value = fields_map.get("Организация") or director_fio
 
     # Формируем строки подписей.
-    # Для поставщика (${FinalStringSupplier}) ячейка уже, поэтому уменьшаем max_length
+    # Для поставщика (${FinalStringSupplier}) ячейка уже.
+    # Для ИП делаем линию короче, чтобы не переносилась.
+    supplier_has_ip = "ИП" in supplier_value_str.upper()
+    supplier_max_len = 34 if supplier_has_ip else 38
     supplier_string = format_director_string(
         supplier_value_str,
         False,
-        max_length=38,
+        max_length=supplier_max_len,
     )
     buyer_string = format_director_string(str(buyer_value).strip(), False, max_length=42)
 
