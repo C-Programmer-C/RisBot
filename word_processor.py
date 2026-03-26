@@ -713,8 +713,8 @@ def create_fields_map(fields: list[dict[str, Any]]) -> dict[str, str]:
         # Теперь адрес берется из таблицы id 109, поле "Адрес доставки" id 110
         if name == "Тип доставки":
             value = format_delivery_type(value)
-        elif name == "Организация":
-            org_value = str(value)
+        elif name == "Организация" or name == "Поставщик":
+            org_value = str(value).strip()
             org_value = org_value.replace('\\"', '"')
             parts = org_value.split('"')
             if len(parts) > 1:
@@ -725,6 +725,14 @@ def create_fields_map(fields: list[dict[str, Any]]) -> dict[str, str]:
                     else:
                         result_parts.append('»' + parts[i])
                 org_value = ''.join(result_parts)
+
+            # Доп. правило только для "Поставщик":
+            # если не ИП и не начинается с "ООО" — приводим к виду "ООО «... »"
+            if name == "Поставщик":
+                upper = org_value.upper()
+                if "ИП" not in upper and not upper.startswith("ООО"):
+                    org_value = f"ООО «{org_value}»"
+
             value = org_value
 
         # Добавляем точку в конце для "Комментарий по заявке", если ее нет
@@ -1761,10 +1769,6 @@ def process_word_template(
         supplier_value = fields_map.get("ФИО Поставщика") or ""
 
     supplier_value_str = str(supplier_value).strip()
-    supplier_upper = supplier_value_str.upper()
-    # Если это не ИП и в начале нет "ООО", добавляем форму "ООО «... »"
-    if "ИП" not in supplier_upper and not supplier_upper.startswith("ООО"):
-        supplier_value_str = f"ООО «{supplier_value_str}»"
 
     # ${FinalStringDirector} формируется по полю "Организация" (покупатель).
     # Поле может лежать внутри table cells, поэтому ищем рекурсивно.
