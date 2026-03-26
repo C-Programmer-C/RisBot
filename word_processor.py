@@ -30,8 +30,11 @@ def format_director_string(director_fio: str, is_general_director: bool, max_len
     if not director_fio or director_fio == "ВЫ НЕ УКАЗАЛИ ДИРЕКТОРА":
         director_fio = "________________"
     
+    # Если в ФИО/названии есть "ИП" — роль "директор" не пишем
+    has_ip = "ИП" in str(director_fio).upper()
+
     # Определяем должность
-    director_title = "Генеральный директор" if is_general_director else "Директор"
+    director_title = "" if has_ip else ("Генеральный директор" if is_general_director else "Директор")
     
     # Длина фиксированных частей: должность + " / " + ФИО
     title_length = len(director_title)
@@ -1691,21 +1694,40 @@ def process_word_template(
     
     fields_map = create_fields_map(fields)
     
-    # Добавляем данные директора
-    fields_map["[SYSTEM] ФИО ДИРЕКТОРА ОРГАНИЗАЦИИ"] = director_fio
-    fields_map["[SYSTEM] ФИО ДИРЕКТОРА ОРГАНИЗАЦИИ".strip()] = director_fio
-    
-    # Добавляем должность директора
-    director_title = "Генеральный директор" if is_general_director else "Директор"
-    fields_map["Director"] = director_title
-    
-    # Добавляем отформатированную строку директора (для подписи)
-    director_string = format_director_string(director_fio, is_general_director, max_length=42)
-    fields_map["Director String"] = director_string
-    fields_map["Director String".strip()] = director_string
-    # Добавляем для плейсхолдера ${FinalStringDirector}
-    fields_map["FinalStringDirector"] = director_string
-    fields_map["FinalStringDirector".strip()] = director_string
+    # --- Подписи: покупатель и поставщик ---
+    # ${FinalStringSupplier} формируется по ФИО Поставщика (id: 117).
+    supplier_field_117 = find_field_by_id(fields, 117)
+    supplier_value = (
+        extract_field_value(supplier_field_117)
+        if supplier_field_117 is not None
+        else director_fio
+    )
+
+    # ${FinalStringDirector} формируется по полю "Организация" (покупатель).
+    buyer_value = fields_map.get("Организация") or director_fio
+
+    # Формируем строки подписей.
+    supplier_string = format_director_string(
+        str(supplier_value).strip(), False, max_length=42
+    )
+    buyer_string = format_director_string(str(buyer_value).strip(), False, max_length=42)
+
+    # Добавляем данные директора/подписанта для уже существующих плейсхолдеров
+    fields_map["[SYSTEM] ФИО ДИРЕКТОРА ОРГАНИЗАЦИИ"] = str(buyer_value).strip()
+    fields_map["[SYSTEM] ФИО ДИРЕКТОРА ОРГАНИЗАЦИИ".strip()] = str(buyer_value).strip()
+
+    fields_map["Director String"] = buyer_string
+    fields_map["Director String".strip()] = buyer_string
+
+    # Плейсхолдер `Director` (отдельное слово "Директор" в шаблоне)
+    buyer_has_ip = "ИП" in str(buyer_value).upper()
+    fields_map["Director"] = "" if buyer_has_ip else "Директор"
+
+    # Новые плейсхолдеры
+    fields_map["FinalStringDirector"] = buyer_string
+    fields_map["FinalStringDirector".strip()] = buyer_string
+    fields_map["FinalStringSupplier"] = supplier_string
+    fields_map["FinalStringSupplier".strip()] = supplier_string
     table_fields = find_table_fields(fields)
     
     table_fields_map = extract_table_fields_to_map(table_fields, all_fields=fields)
