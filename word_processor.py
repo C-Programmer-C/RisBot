@@ -1770,13 +1770,12 @@ def process_word_template(
 
     supplier_value_str = str(supplier_value).strip()
 
-    # ${FinalStringDirector} формируется по полю "Организация" (покупатель).
-    # Поле может лежать внутри table cells, поэтому ищем рекурсивно.
+    # Определяем, является ли покупатель ИП по полю "Организация"
     buyer_field = find_field_by_name(fields, "Организация")
-    buyer_value = extract_field_value(buyer_field) if buyer_field is not None else ""
-    if not buyer_value:
-        # fallback на старые данные директора (на случай если в payload еще старый формат)
-        buyer_value = fields_map.get("Организация") or director_fio
+    buyer_org_value = extract_field_value(buyer_field) if buyer_field is not None else ""
+    if not buyer_org_value:
+        buyer_org_value = fields_map.get("Организация") or ""
+    buyer_has_ip = "ИП" in str(buyer_org_value).upper()
 
     # Формируем строки подписей.
     # Для поставщика (${FinalStringSupplier}) ячейка уже.
@@ -1788,17 +1787,23 @@ def process_word_template(
         False,
         max_length=supplier_max_len,
     )
-    buyer_string = format_director_string(str(buyer_value).strip(), False, max_length=42)
+    # ${FinalStringDirector} должен содержать ФИО директора покупателя (из лида, поле id=53),
+    # а слово "Директор" добавляем/убираем в зависимости от того, ИП ли организация покупателя.
+    director_person_value = str(director_fio).strip()
+    buyer_string = format_director_string(
+        director_person_value,
+        False if buyer_has_ip else False,
+        max_length=42,
+    )
 
     # Добавляем данные директора/подписанта для уже существующих плейсхолдеров
-    fields_map["[SYSTEM] ФИО ДИРЕКТОРА ОРГАНИЗАЦИИ"] = str(buyer_value).strip()
-    fields_map["[SYSTEM] ФИО ДИРЕКТОРА ОРГАНИЗАЦИИ".strip()] = str(buyer_value).strip()
+    fields_map["[SYSTEM] ФИО ДИРЕКТОРА ОРГАНИЗАЦИИ"] = director_person_value
+    fields_map["[SYSTEM] ФИО ДИРЕКТОРА ОРГАНИЗАЦИИ".strip()] = director_person_value
 
     fields_map["Director String"] = buyer_string
     fields_map["Director String".strip()] = buyer_string
 
     # Плейсхолдер `Director` (отдельное слово "Директор" в шаблоне)
-    buyer_has_ip = "ИП" in str(buyer_value).upper()
     fields_map["Director"] = "" if buyer_has_ip else "Директор"
 
     # Новые плейсхолдеры
