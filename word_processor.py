@@ -1760,6 +1760,12 @@ def process_word_template(
         # fallback: иногда поле уже попадает в fields_map по имени
         supplier_value = fields_map.get("ФИО Поставщика") or ""
 
+    supplier_value_str = str(supplier_value).strip()
+    supplier_upper = supplier_value_str.upper()
+    # Если это не ИП и в начале нет "ООО", добавляем форму "ООО «... »"
+    if "ИП" not in supplier_upper and not supplier_upper.startswith("ООО"):
+        supplier_value_str = f"ООО «{supplier_value_str}»"
+
     # ${FinalStringDirector} формируется по полю "Организация" (покупатель).
     # Поле может лежать внутри table cells, поэтому ищем рекурсивно.
     buyer_field = find_field_by_name(fields, "Организация")
@@ -1771,7 +1777,7 @@ def process_word_template(
     # Формируем строки подписей.
     # Для поставщика (${FinalStringSupplier}) ячейка уже, поэтому уменьшаем max_length
     supplier_string = format_director_string(
-        str(supplier_value).strip(),
+        supplier_value_str,
         False,
         max_length=38,
     )
