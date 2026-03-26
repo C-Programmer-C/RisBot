@@ -1505,6 +1505,60 @@ def find_field_by_id(fields_list: list[dict[str, Any]], target_id: int) -> dict[
                     found = find_field_by_id(nested_fields, target_id)
                     if found:
                         return found
+        
+        # Проверяем табличные значения (type="table")
+        if field.get("type") == "table":
+            table_value = field.get("value", [])
+            if isinstance(table_value, list):
+                for row in table_value:
+                    if not isinstance(row, dict):
+                        continue
+                    cells = row.get("cells", [])
+                    if not isinstance(cells, list):
+                        continue
+                    for cell in cells:
+                        if not isinstance(cell, dict):
+                            continue
+                        if cell.get("id") == target_id:
+                            return cell
+    return None
+
+
+def find_field_by_name(
+    fields_list: list[dict[str, Any]], target_name: str
+) -> dict[str, Any] | None:
+    """Рекурсивно ищет поле/ячейку по точному имени (включая table cells)."""
+    for field in fields_list:
+        name = field.get("name")
+        if name == target_name:
+            return field
+
+        # title nesting
+        if field.get("type") == "title":
+            field_value = field.get("value")
+            if isinstance(field_value, dict):
+                nested_fields = field_value.get("fields", [])
+                if nested_fields:
+                    found = find_field_by_name(nested_fields, target_name)
+                    if found:
+                        return found
+
+        # table cells nesting
+        if field.get("type") == "table":
+            table_value = field.get("value", [])
+            if isinstance(table_value, list):
+                for row in table_value:
+                    if not isinstance(row, dict):
+                        continue
+                    cells = row.get("cells", [])
+                    if not isinstance(cells, list):
+                        continue
+                    for cell in cells:
+                        if not isinstance(cell, dict):
+                            continue
+                        if cell.get("name") == target_name:
+                            return cell
+
     return None
 
 
@@ -1700,16 +1754,22 @@ def process_word_template(
     supplier_value = (
         extract_field_value(supplier_field_117)
         if supplier_field_117 is not None
-        else director_fio
+        else ""
     )
+    if not supplier_value:
+        # fallback: иногда поле уже попадает в fields_map по имени
+        supplier_value = fields_map.get("ФИО Поставщика") or ""
 
     # ${FinalStringDirector} формируется по полю "Организация" (покупатель).
-    buyer_value = fields_map.get("Организация") or director_fio
+    # Поле может лежать внутри table cells, поэтому ищем рекурсивно.
+    buyer_field = find_field_by_name(fields, "Организация")
+    buyer_value = extract_field_value(buyer_field) if buyer_field is not None else ""
+    if not buyer_value:
+        # fallback на старые данные директора (на случай если в payload еще старый формат)
+        buyer_value = fields_map.get("Организация") or director_fio
 
     # Формируем строки подписей.
-    supplier_string = format_director_string(
-        str(supplier_value).strip(), False, max_length=42
-    )
+    supplier_string = format_director_string(str(supplier_value).strip(), False, max_length=42)
     buyer_string = format_director_string(str(buyer_value).strip(), False, max_length=42)
 
     # Добавляем данные директора/подписанта для уже существующих плейсхолдеров
