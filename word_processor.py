@@ -1769,7 +1769,12 @@ def process_word_template(
         buyer_value = fields_map.get("Организация") or director_fio
 
     # Формируем строки подписей.
-    supplier_string = format_director_string(str(supplier_value).strip(), False, max_length=42)
+    # Для поставщика (${FinalStringSupplier}) ячейка уже, поэтому уменьшаем max_length
+    supplier_string = format_director_string(
+        str(supplier_value).strip(),
+        False,
+        max_length=38,
+    )
     buyer_string = format_director_string(str(buyer_value).strip(), False, max_length=42)
 
     # Добавляем данные директора/подписанта для уже существующих плейсхолдеров
