@@ -1,14 +1,16 @@
 import hashlib
 import hmac
+import html
 import json
 import logging
+from collections import deque
 from pathlib import Path
 from typing import Any, Optional
 from config import conf_logger, settings
-from fastapi import FastAPI, Header, HTTPException, Request, status
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, Header, HTTPException, Query, Request, status
+from fastapi.responses import HTMLResponse, JSONResponse
 import asyncio
-from pyrus_api_service import get_token_manager
+from pyrus_api_service import api_request, get_token_manager
 from utils import (
     download_files,
     find_value,
@@ -21,6 +23,8 @@ from contextlib import asynccontextmanager
 from word_processor import process_word_template, get_director_data, extract_field_value
 
 logger = logging.getLogger(__name__)
+
+PYRUS_DELETE_LINKED_FORM_ID = 1562280
 
 count_triggered = 1
 
@@ -92,6 +96,188 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="Pyrus Webhook (FastAPI)", lifespan=lifespan)
+
+
+async def _collect_tasks_in_linked_graph(root_task_id: int) -> list[int]:
+    """Обходит граф связанных задач через linked_task_ids (BFS)."""
+    visited: set[int] = set()
+    order: list[int] = []
+    queue: deque[int] = deque([root_task_id])
+    while queue:
+        tid = queue.popleft()
+        if tid in visited:
+            continue
+        visited.add(tid)
+        order.append(tid)
+        try:
+            data = await api_request("GET", endpoint=f"/tasks/{tid}")
+        except Exception as e:
+            logger.warning("GET /tasks/%s failed while collecting linked graph: %s", tid, e)
+            continue
+        if not isinstance(data, dict):
+            continue
+        task = data.get("task") or {}
+        for lid in task.get("linked_task_ids") or []:
+            try:
+                lid_int = int(lid)
+            except (TypeError, ValueError):
+                continue
+            if lid_int not in visited:
+                queue.append(lid_int)
+    return order
+
+
+@app.get("/delete", response_class=HTMLResponse)
+async def delete_task_and_linked(task_id: int = Query(..., ge=1)):
+    """
+    Удаляет связанные задачи с form_id=1562280, затем основную задачу.
+    Вызывается из кнопки на форме Pyrus: GET /delete?task_id=...
+    """
+    await get_token_manager().get_token()
+
+    try:
+        root_data = await api_request("GET", endpoint=f"/tasks/{task_id}")
+    except Exception as e:
+        logger.exception("Failed to fetch root task %s", task_id)
+        return HTMLResponse(
+            _delete_result_html(False, [], [], [f"Не удалось загрузить задачу {task_id}: {e}"]),
+            status_code=502,
+        )
+
+    if not isinstance(root_data, dict) or not root_data.get("task"):
+        return HTMLResponse(
+            _delete_result_html(False, [], [], [f"Задача {task_id} не найдена"]),
+            status_code=404,
+        )
+
+    all_in_graph = await _collect_tasks_in_linked_graph(task_id)
+    related_ids = [tid for tid in all_in_graph if tid != task_id]
+
+    linked_will_delete: list[int] = []
+    errors: list[str] = []
+
+    for rid in related_ids:
+        try:
+            tdata = await api_request("GET", endpoint=f"/tasks/{rid}")
+        except Exception as e:
+            errors.append(f"Задача {rid}: не удалось загрузить ({e})")
+            continue
+        task = (tdata or {}).get("task") or {}
+        form_id = task.get("form_id")
+        if form_id == PYRUS_DELETE_LINKED_FORM_ID:
+            linked_will_delete.append(rid)
+
+    deleted_linked: list[int] = []
+
+    for rid in linked_will_delete:
+        try:
+            del_resp = await api_request("DELETE", endpoint=f"/tasks/{rid}")
+        except Exception as e:
+            errors.append(f"Задача {rid}: удаление не выполнено ({e})")
+            continue
+        if isinstance(del_resp, dict) and del_resp.get("deleted") is True:
+            deleted_linked.append(rid)
+        else:
+            errors.append(f"Задача {rid}: неожиданный ответ API при удалении")
+
+    try:
+        root_del = await api_request("DELETE", endpoint=f"/tasks/{task_id}")
+    except Exception as e:
+        errors.append(f"Основная задача {task_id}: удаление не выполнено ({e})")
+        return HTMLResponse(
+            _delete_result_html(False, deleted_linked, [], errors),
+            status_code=502,
+        )
+
+    root_ok = isinstance(root_del, dict) and root_del.get("deleted") is True
+    if not root_ok:
+        errors.append(f"Основная задача {task_id}: неожиданный ответ API при удалении")
+
+    return HTMLResponse(
+        _delete_result_html(root_ok, deleted_linked, [task_id] if root_ok else [], errors),
+        status_code=status.HTTP_200_OK if root_ok else status.HTTP_502_BAD_GATEWAY,
+    )
+
+
+def _id_chips(ids: list[int]) -> str:
+    if not ids:
+        return '<p class="muted">—</p>'
+    chips = "".join(
+        f'<span class="chip">{html.escape(str(i))}</span>' for i in ids
+    )
+    return f'<div class="id-list">{chips}</div>'
+
+
+def _delete_result_html(
+    success: bool,
+    deleted_linked: list[int],
+    deleted_root: list[int],
+    errors: list[str],
+) -> str:
+    has_errors = bool(errors)
+    if success and not has_errors:
+        title = "Все задачи удалены"
+        lead = "Операция завершена успешно."
+    elif success and has_errors:
+        title = "Удаление завершено частично"
+        lead = "Часть действий выполнена; ниже список успешно удалённых id и замечания."
+    else:
+        title = "Ошибка"
+        lead = "Удаление не завершено полностью."
+
+    badge = "#16a34a" if success and not has_errors else ("#ca8a04" if success else "#dc2626")
+    parts: list[str] = [f'<p class="lead">{html.escape(lead)}</p>']
+
+    all_deleted = list(deleted_linked) + list(deleted_root)
+    if success and all_deleted:
+        parts.append(
+            f'<p class="summary">Всего удалено: <strong>{len(all_deleted)}</strong></p>'
+        )
+
+    parts.append(
+        f'<h2>Связанные (форма {PYRUS_DELETE_LINKED_FORM_ID})</h2>'
+        f"{_id_chips(deleted_linked)}"
+    )
+    parts.append("<h2>Основная задача</h2>" + _id_chips(deleted_root))
+
+    if success and not deleted_linked and deleted_root:
+        parts.insert(
+            2,
+            '<p class="muted">Связанных задач с нужной формой не было — удалена только основная.</p>',
+        )
+
+    if errors:
+        err_html = "<br/>".join(html.escape(e) for e in errors)
+        parts.append(f'<p class="err"><strong>Замечания:</strong><br/>{err_html}</p>')
+    body = "".join(parts)
+    return f"""<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>{html.escape(title)}</title>
+<style>
+body {{ font-family: system-ui, Segoe UI, Roboto, sans-serif; margin: 0; background: #0f172a; color: #e2e8f0; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }}
+.card {{ background: #1e293b; border-radius: 12px; padding: 28px 32px; max-width: 640px; width: 100%; box-shadow: 0 10px 40px rgba(0,0,0,.35); border: 1px solid #334155; }}
+h1 {{ margin: 0 0 8px; font-size: 1.35rem; display: flex; align-items: center; gap: 10px; }}
+h2 {{ margin: 22px 0 10px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #94a3b8; }}
+.badge {{ display: inline-block; width: 10px; height: 10px; border-radius: 999px; background: {badge}; flex-shrink: 0; }}
+.lead {{ margin: 0 0 8px; color: #cbd5e1; font-size: 0.98rem; line-height: 1.5; }}
+.summary {{ margin: 12px 0 0; font-size: 0.95rem; }}
+.muted {{ margin: 8px 0 0; color: #64748b; font-size: 0.9rem; }}
+.id-list {{ display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 0; }}
+.chip {{ display: inline-flex; align-items: center; padding: 8px 14px; border-radius: 10px; background: #334155; border: 1px solid #475569; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.92rem; color: #f1f5f9; }}
+.err {{ color: #fecaca; margin-top: 18px; font-size: 0.92rem; line-height: 1.45; }}
+</style>
+</head>
+<body>
+<div class="card">
+<h1><span class="badge"></span>{html.escape(title)}</h1>
+{body}
+</div>
+</body>
+</html>"""
+
 
 @app.post("/webhook")
 async def pyrus_webhook(
@@ -261,4 +447,4 @@ if __name__ == "__main__":
     import uvicorn
     conf_logger()
     logger.info("Server started.")
-    uvicorn.run("server.main:app", host="127.0.0.1", port=8000)
+    uvicorn.run("server.main:app", host="127.0.0.1", port=8080)

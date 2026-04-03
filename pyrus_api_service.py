@@ -128,6 +128,9 @@ async def api_request(
             if params and params.get("download"):
                 return response.content
 
+            if not response.content or not response.content.strip():
+                return {}
+
             return response.json()
 
     except httpx.HTTPStatusError as e:
