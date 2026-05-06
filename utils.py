@@ -13,6 +13,32 @@ from pyrus_api_service import api_request
 logger = logging.getLogger(__name__)
 
 
+def find_file_root_id_in_task_fields(
+    fields: List[Dict[str, Any]],
+    field_id: int,
+    attachment_name: str,
+) -> Optional[int]:
+    """root_id первого вложения с данным именем в file-поле (для апдейта версии через field_updates)."""
+    for field in fields:
+        if field.get("id") != field_id or field.get("type") != "file":
+            continue
+        val = field.get("value")
+        if not isinstance(val, list):
+            continue
+        for item in val:
+            if not isinstance(item, dict):
+                continue
+            if item.get("name") != attachment_name:
+                continue
+            rid = item.get("root_id")
+            if rid is not None:
+                try:
+                    return int(rid)
+                except (TypeError, ValueError):
+                    return None
+    return None
+
+
 async def open_chat(
     task_id: int,
     json_data: dict[str, str | dict[str, str]] = {

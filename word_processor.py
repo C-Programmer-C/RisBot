@@ -69,6 +69,50 @@ def format_director_string(director_fio: str, is_general_director: bool, max_len
             return director_title[:max_length]
 
 
+def pyrus_checkbox_like_checked(field: dict[str, Any]) -> bool:
+    """Да/нет для полей Pyrus: checkmark, flag, multiple_choice (в т.ч. choice_ids)."""
+    fv = field.get("value")
+    ft = field.get("type", "")
+    if fv is None:
+        return False
+    if isinstance(fv, bool):
+        return fv
+    if isinstance(fv, int):
+        return fv != 0
+    if isinstance(fv, str):
+        s = fv.strip().lower()
+        if s in ("unchecked", "none", "false", "no", "0", ""):
+            return False
+        return s in ("checked", "true", "1", "yes")
+    if isinstance(fv, dict):
+        if ft == "title":
+            cm = fv.get("checkmark")
+            if isinstance(cm, str):
+                return cm.strip().lower() == "checked"
+        if fv.get("checked") is True:
+            return True
+        cids = fv.get("choice_ids")
+        if isinstance(cids, list) and len(cids) > 0:
+            return True
+        cnames = fv.get("choice_names")
+        if isinstance(cnames, list) and len(cnames) > 0:
+            return True
+        cid = fv.get("choice_id")
+        if isinstance(cid, int):
+            return cid > 0
+        cname = fv.get("choice_name")
+        if isinstance(cname, str) and cname.strip():
+            return True
+        inner = fv.get("value")
+        if isinstance(inner, bool):
+            return inner
+        if isinstance(inner, str):
+            return inner.strip().lower() in ("checked", "true", "1", "yes")
+        if isinstance(inner, int):
+            return inner > 0
+    return False
+
+
 async def get_director_data(lead_task_id: int) -> tuple[str, bool]:
     """
     Получает данные директора из задачи лида в Pyrus.
@@ -114,34 +158,14 @@ async def get_director_data(lead_task_id: int) -> tuple[str, bool]:
                     director_fio = str(value).strip()
                     logger.info(f"Found director FIO (id=53): {director_fio}")
             
-            # Поле с id 54 - Генеральный директор (checked/unchecked)
+            # Поле с id 54 - Генеральный директор (checkmark / flag / multiple_choice)
             elif field_id == 54:
                 field_value = field.get("value")
                 field_type = field.get("type", "")
-                
-                # Проверяем, является ли значение "checked"
-                if isinstance(field_value, str):
-                    is_general_director = field_value.lower() in ["checked", "true", "1", "yes"]
-                elif isinstance(field_value, dict):
-                    # Может быть структура с checked/unchecked
-                    checked_value = field_value.get("value", field_value.get("checked", field_value.get("choice_id")))
-                    if isinstance(checked_value, bool):
-                        is_general_director = checked_value
-                    elif isinstance(checked_value, str):
-                        is_general_director = checked_value.lower() in ["checked", "true", "1", "yes"]
-                    elif isinstance(checked_value, int):
-                        # Может быть choice_id (0 = unchecked, >0 = checked)
-                        is_general_director = checked_value > 0
-                elif isinstance(field_value, bool):
-                    is_general_director = field_value
-                elif isinstance(field_value, int):
-                    # Может быть choice_id (0 = unchecked, >0 = checked)
-                    is_general_director = field_value > 0
-                elif field_value is None or field_value == "":
-                    # Пустое значение = unchecked
-                    is_general_director = False
-                
-                logger.info(f"Found general director field (id=54, type={field_type}): value={field_value}, is_general={is_general_director}")
+                is_general_director = pyrus_checkbox_like_checked(field)
+                logger.info(
+                    f"Found general director field (id=54, type={field_type}): value={field_value}, is_general={is_general_director}"
+                )
         
         logger.info(f"Director data for task {lead_task_id}: FIO='{director_fio}', is_general={is_general_director}")
         return director_fio, is_general_director
@@ -538,7 +562,7 @@ def get_loading_description_multiple(products_loading: list[dict[str, str]]) -> 
 
 
 def format_date_russian(date_str: str) -> str:
-    """Форматирует дату из формата YYYY-MM-DD или DD.MM.YYYY в формат «DD» месяца YYYY года."""
+    """Форматирует дату из формата YYYY-MM-DD или DD.MM.YYYY в формат «01» месяца YYYY года (день с ведущим нулём)."""
     if not date_str:
         return date_str
     
@@ -557,7 +581,7 @@ def format_date_russian(date_str: str) -> str:
         day = date_obj.day
         month = months[date_obj.month - 1]
         year = date_obj.year
-        return f"«{day}» {month} {year} года"
+        return f"«{day:02d}» {month} {year} года"
     except (ValueError, TypeError):
         return date_str
 
@@ -1792,7 +1816,7 @@ def process_word_template(
     director_person_value = str(director_fio).strip()
     buyer_string = format_director_string(
         director_person_value,
-        False if buyer_has_ip else False,
+        False if buyer_has_ip else is_general_director,
         max_length=42,
     )
 
@@ -1804,7 +1828,11 @@ def process_word_template(
     fields_map["Director String".strip()] = buyer_string
 
     # Плейсхолдер `Director` (отдельное слово "Директор" в шаблоне)
-    fields_map["Director"] = "" if buyer_has_ip else "Директор"
+    fields_map["Director"] = (
+        ""
+        if buyer_has_ip
+        else ("Генеральный директор" if is_general_director else "Директор")
+    )
 
     # Новые плейсхолдеры
     fields_map["FinalStringDirector"] = buyer_string

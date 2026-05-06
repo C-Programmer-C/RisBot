@@ -13,6 +13,7 @@ import asyncio
 from pyrus_api_service import api_request, get_token_manager
 from utils import (
     download_files,
+    find_file_root_id_in_task_fields,
     find_value,
     open_chat,
     send_message_to_telegram_chat,
@@ -401,17 +402,19 @@ async def process_webhook(
         
         if file_guid:
             logger.info(f"File uploaded successfully with GUID: {file_guid}")
-            # Обновляем поле спецификации (id: 5) через field_updates
+            existing_root_id = find_file_root_id_in_task_fields(fields, 5, filename)
+            spec_file_entry: dict[str, Any] = {"guid": file_guid}
+            if existing_root_id is not None:
+                spec_file_entry["root_id"] = existing_root_id
+                logger.info(
+                    f"Replacing specification attachment root_id={existing_root_id} in field 5"
+                )
             subscribers_removed = [{"id": 1239059}]
             json_data = {
                 "field_updates": [
                     {
                         "id": 5,
-                        "value": [
-                            {
-                                "guid": file_guid,
-                            }
-                        ],
+                        "value": [spec_file_entry],
                     }
                 ],
                 "subscribers_removed": subscribers_removed,
