@@ -8,7 +8,9 @@ from pathlib import Path
 from typing import Any, Optional
 from config import conf_logger, settings
 from fastapi import FastAPI, Header, HTTPException, Query, Request, status
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 import asyncio
 from pyrus_api_service import api_request, get_token_manager
 from utils import (
@@ -22,6 +24,7 @@ from utils import (
 )
 from contextlib import asynccontextmanager
 from word_processor import process_word_template, get_director_data, extract_field_value
+from server.web_app_integration import WEB_APP_FRONTEND_DIST, web_api_router
 
 logger = logging.getLogger(__name__)
 
@@ -97,6 +100,29 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="Pyrus Webhook (FastAPI)", lifespan=lifespan)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.cors_origin_list,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(web_api_router, prefix="/api", tags=["sales-report"])
+
+
+@app.get("/info")
+async def info(request: Request) -> JSONResponse:
+    base = str(request.base_url).rstrip("/")
+    return JSONResponse(
+        {
+            "status": "ok",
+            "api_url": base,
+            "web_path": "/info",
+            "server_port": settings.SERVER_PORT,
+        }
+    )
 
 
 async def _collect_tasks_in_linked_graph(root_task_id: int) -> list[int]:
@@ -446,8 +472,41 @@ async def process_webhook(
     return JSONResponse(status_code=status.HTTP_200_OK, content={})
 
 
+def _mount_frontend(app: FastAPI) -> None:
+    index = WEB_APP_FRONTEND_DIST / "index.html"
+    if not index.is_file():
+        logger.warning(
+            "Frontend не смонтирован: %s не найден. "
+            "Собери: cd web_app/frontend && npm run build — затем перезапусти сервер.",
+            index,
+        )
+        return
+
+    assets_dir = WEB_APP_FRONTEND_DIST / "assets"
+
+    @app.get("/", include_in_schema=False)
+    async def frontend_index() -> FileResponse:
+        return FileResponse(index)
+
+    if assets_dir.is_dir():
+        app.mount(
+            "/assets",
+            StaticFiles(directory=assets_dir),
+            name="frontend-assets",
+        )
+
+    logger.info("Frontend: http://%s:%s/ (%s)", settings.SERVER_HOST, settings.SERVER_PORT, index)
+
+
+_mount_frontend(app)
+
+
 if __name__ == "__main__":
     import uvicorn
     conf_logger()
-    logger.info("Server started.")
-    uvicorn.run("server.main:app", host="127.0.0.1", port=8000)
+    logger.info("Server started on %s:%s", settings.SERVER_HOST, settings.SERVER_PORT)
+    uvicorn.run(
+        "server.main:app",
+        host=settings.SERVER_HOST,
+        port=settings.SERVER_PORT,
+    )
