@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import calendar
+import threading
 from datetime import date
 from typing import Any
 
@@ -15,6 +16,7 @@ class PyrusClient:
 
     def __init__(self) -> None:
         self._token: str | None = None
+        self._token_lock = threading.Lock()
         self._http = httpx.Client(timeout=120.0)
 
     @classmethod
@@ -27,10 +29,18 @@ class PyrusClient:
     def register_url(self) -> str:
         return f"https://api.pyrus.com/v4/forms/{settings.pyrus_form_id}/register"
 
+    def invalidate_token(self) -> None:
+        with self._token_lock:
+            self._token = None
+
     def get_access_token(self) -> str:
-        if self._token:
+        with self._token_lock:
+            if self._token:
+                return self._token
+            self._token = self._fetch_token()
             return self._token
 
+    def _fetch_token(self) -> str:
         response = self._http.post(
             self.AUTH_URL,
             json={
@@ -44,8 +54,20 @@ class PyrusClient:
         token = payload.get("access_token")
         if not token:
             raise RuntimeError("Pyrus auth: access_token not found")
-        self._token = token
         return token
+
+    def _request(self, method: str, url: str, **kwargs: Any) -> httpx.Response:
+        for attempt in range(2):
+            token = self.get_access_token()
+            headers = dict(kwargs.pop("headers", {}))
+            headers["Authorization"] = f"Bearer {token}"
+            response = self._http.request(method, url, headers=headers, **kwargs)
+            if response.status_code == 401 and attempt == 0:
+                self.invalidate_token()
+                continue
+            response.raise_for_status()
+            return response
+        raise RuntimeError("Pyrus request failed after token refresh")
 
     def register_tasks(
         self,
@@ -57,27 +79,25 @@ class PyrusClient:
         last_day = date(year, month_num, calendar.monthrange(year, month_num)[1])
         date_condition = f"gt{first_day.isoformat()},lt{last_day.isoformat()}"
 
-        response = self._http.post(
+        response = self._request(
+            "POST",
             self.register_url,
-            headers={"Authorization": f"Bearer {self.get_access_token()}"},
             json={
                 "fld1": date_condition,
                 "include_archived": "y",
                 "fld6": product_ids,
             },
         )
-        response.raise_for_status()
         payload = response.json()
         tasks = payload.get("tasks") or []
         return tasks if isinstance(tasks, list) else []
 
     def get_catalog(self, catalog_id: int | None = None) -> dict[str, Any]:
         catalog = catalog_id if catalog_id is not None else settings.pyrus_catalog_id
-        response = self._http.get(
+        response = self._request(
+            "GET",
             f"https://api.pyrus.com/v4/catalogs/{catalog}",
-            headers={"Authorization": f"Bearer {self.get_access_token()}"},
         )
-        response.raise_for_status()
         payload = response.json()
         return payload if isinstance(payload, dict) else {}
 
